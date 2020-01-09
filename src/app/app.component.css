@@ -1,0 +1,42 @@
+body{
+    background:#ccc ;
+}
+.header a:hover{
+color: #fff;
+}
+#bg-img{
+background-image: url('/assets/portfolio1.jpg');
+background-size: 100%;
+background-repeat: no-repeat;
+min-height: 500px;
+
+}
+
+#about{
+    margin-top: -300px; 
+}
+
+#about .fab{
+    color: white;
+}
+#about .fas{
+    color: white;
+}
+.imgProfile{
+    margin: 20px;
+}
+#about span{
+    padding: 10px 20px 10px 20px;
+}
+
+#about hr{
+    border-width: 3px;
+    margin-top: 6px; 
+}
+#skills span{
+    padding: 10px 20px 10px 20px;
+}
+#skills hr{
+    border-width: 3px;
+    margin-top: 6px;
+}
