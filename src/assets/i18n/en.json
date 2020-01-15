@@ -1,0 +1,26 @@
+{
+    "ABOUT": "About Me",
+    "MY_PROJECTS": "My Projects",
+    "CONTACT": "Contact",
+    "ABOUT_ME_TITULO":"Hi! Welcome to my website!",
+    "ABOUT_ME": "My name is Cristian I am 28 years old.
+    I am a Programmer Analyst I studied at the National University of Jujuy,
+    I specialize in Web Development, my profile is FullStack Dev,
+    I love learning new things and constantly improving my skills
+     with books, documentations, courses, videos on YouTube, StackOverflow (my lifeguard!)
+    I believe in effort and discipline, my goals are clear and I work every day to meet them.",
+    "LIBRERIAS": "Libraries",
+    "BASES_DE_DATOS": "Databases",
+    "NOMBRE": "Name",
+    "EMAIL": "Email",
+    "MENSAJE": "Message",
+    "ENVIAR":"Send",
+    "CONTACTAME":"Contact me",
+    "CONTROL_CLIENTES":"Customer Control",
+    "FRASE":"God I thank you for what I have, but I warn you that I'm going for more!",
+    "MUSICO_FRUSTRADO":"FrustratedMusician",
+    "FUTBOLISTA_AMATEUR":"AmateurFootballer",
+    "IDIOMA":"Language",
+    "ESPAÑOL":"Spanish",
+    "INGLES":"English"
+}

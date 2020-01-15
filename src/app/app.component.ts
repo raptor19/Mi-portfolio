@@ -9,7 +9,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'portfolioCristian';
   langs: string[] = [];
-  
+  es = 'es';
+  en = 'en';
+
   constructor(private translate: TranslateService) {
     this.translate.setDefaultLang('es');
     this.translate.use('es');
@@ -17,7 +19,12 @@ export class AppComponent {
     this.langs = this.translate.getLangs();
   }
 
-  changeLang(lang: string) {
-    this.translate.use(lang);
+  // Traducir sitio a es
+  changeEs() {
+    this.translate.use(this.es);
+  }
+  // Traducir el sitio a en
+  changeEn() {
+    this.translate.use(this.en);
   }
 }

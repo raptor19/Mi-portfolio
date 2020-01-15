@@ -1,7 +1,7 @@
 <div data-spy="scroll" data-target=".navbar">
   <!--Navbar-->
   <div class="header">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <a class="navbar-brand" href="#">Cristian</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,24 +10,27 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#about">Acerca de mi</a>
+            <a class="nav-link" href="#">about</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#skills">Skills</a>
+            <a class="nav-link" href="#">Skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#projects">Mis Proyectos</a>
+            <a class="nav-link" href="#">proyectos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="#">contact</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Idioma
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              idioma
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Español</a>
-              <a class="dropdown-item" href="#">Ingles</a>
+              <button type="button" class="btn btn-link">Link</button>
+              <button type="button" class="btn btn-link">Link</button>
+              <a class="dropdown-item" href="#" (click)="changeEs()">Español</a>
+              <a class="dropdown-item" href="#" (click)="changeEn()">Ingles</a>
             </div>
           </li>
         </ul>
@@ -44,7 +47,7 @@
   <div id="about">
     <div class="container">
       <div class="row">
-        <div class="card bg-white mb-5 col-sm-12">
+        <div class="card bg-white mb-3 col-sm-12">
           <!--#body-->
           <div class="card-body row">
             <div class="col-sm-4">
@@ -54,27 +57,19 @@
             <div class="col-sm-8 p-4">
               <h1 class="card-title">Almiron Cristian</h1>
               <p>
-                #Teke😎👍<br/>
-                #Jujeño🌵🌄<br/>
-                #FullStack Developer Junior💪👔💻<br/>
-                #Javascript & Java😍👍<br/>
-                #MusicoFrustrado🎻🎸🎶<br/>
-                #FutbolistaAmateur👕👟<br/>
-                #Treeking🏃🌄<br/>
+                #Teke😎👍<br />
+                #Jujeño🌵🌄<br />
+                #FullStack Developer Junior💪👔💻<br />
+                #Javascript & Java😍👍<br />
+                #MusicoFrustrado🎻🎸🎶<br />
+                #FutbolistaAmateur👕👟<br />
+                #Treeking🏃🌄<br />
                 <strong>
                   "Dios te doy gracias por lo que tengo,pero te aviso que voy por mas!"
                 </strong>
               </p>
+              <button type="button" class="btn btn-secondary btn-lg">Descargar CV</button>
             </div>
-          </div>
-          <!--#footer-->
-          <div class="card-footer bg-dark">
-            <a href="https://www.facebook.com/nico.almiron.37266" alt="facebook"><i
-                class="fab fa-facebook fa-2x mx-5"></i></a>
-            <a href="https://www.instagram.com/?hl=es-la" alt="instagram"><i
-                class="fab fa-instagram fa-2x mx-5"></i></a>
-            <a href="#"><i class="fab fa-github fa-2x mx-5" alt="github"></i></a>
-            <a href="#"><i class="fas fa-envelope-open-text fa-2x mx-5" alt="mail"></i></a>
           </div>
         </div>
       </div>
@@ -83,28 +78,81 @@
 
     <div class="container">
       <div class="row">
+        <div class="p-4 my-2 bg-danger text-white col-sm-12 text-center">
+          <h5>ACERCA DE MI</h5>
+        </div>
         <div class="col">
-          <span class="bg-danger text-white">Acerca de mi</span>
-          <hr class="bg-danger">
+
           <div class="row">
-            <div class="col-sm-8">
-              <div class="my-2 mx-1 p-3">
-                <h3>Hola! Bienvenido a mi sitio web!</h3>
-                <p class="description">
-                  Me llamo Cristian tengo 28 años. Soy Analista Programador
-                  estudie en la Universidad Nacional de Jujuy,me especializo en el Desarrollo Web,mi perfil es
-                  FullStack Dev,me fascina
-                  aprender cosas nuevas
-                  y mejorar constantemente mis habilidades con libros,documentaciones,cursos,videos en
-                  Youtube,StackOverflow(mi salvavidas!)
-                  .<br />Creo en el esfuerzo y la disciplina,mis objetivos son claros y trabajo dia a dia para cumplirlos.
-  
-                </p>
+            <div class="card my-2">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <div class="my-2 mx-1 p-3">
+                      <h3 class="card-title">Hola! Bienvenido a mi sitio web!</h3>
+                      <p class="card-text">
+                        Me llamo Cristian tengo 28 años. Soy Analista Programador
+                        estudie en la Universidad Nacional de Jujuy,me especializo en el Desarrollo Web,mi perfil es
+                        FullStack Dev,me fascina
+                        aprender cosas nuevas
+                        y mejorar constantemente mis habilidades con libros,documentaciones,cursos,videos en
+                        Youtube,StackOverflow(mi salvavidas!)
+                        .<br />Creo en el esfuerzo y la disciplina,mis objetivos son claros y trabajo dia a dia para
+                        cumplirlos.
+
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <img class="imgProfile img-fluid m-0" src="/assets/cristian.jpg" alt="cristian" width="300"
+                      height="250" rounded-top d-none d-lg-block>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-sm-4">
-              <img class="imgProfile img-fluid m-0" src="/assets/cristian.jpg" alt="cristian" width="300" height="250"
-                rounded-top d-none d-lg-block>
+          </div>
+
+          <div class="row">
+            <div class="card text-right my-2">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img class="imgProfile img-fluid m-0" src="/assets/cristian.jpg" alt="cristian" width="300"
+                      height="250" rounded-top d-none d-lg-block>
+                  </div>
+                  <div class="col-sm-8">
+                    <div class="my-2 mx-1 p-3">
+                      <h3 class="card-title">Hola! Bienvenido a mi sitio web!</h3>
+                      <p class="card-text">
+                        Me llamo Cristian tengo 28 años. Soy Analista Programador
+                        estudie en la Universidad Nacional de Jujuy,me especializo en el Desarrollo Web,mi perfil es
+                        FullStack Dev,me fascina
+                        aprender cosas nuevas
+                        y mejorar constantemente mis habilidades con libros,documentaciones,cursos,videos en
+                        Youtube,StackOverflow(mi salvavidas!)
+                        .<br />Creo en el esfuerzo y la disciplina,mis objetivos son claros y trabajo dia a dia para
+                        cumplirlos.
+
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="row">
+            <div class="card my-2">
+              <img src="/assets/portfolio1.jpg" class="card-img-top" alt="sdasdasdasd">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
             </div>
           </div>
         </div>
@@ -115,142 +163,80 @@
 <!-- #skills -->
 <div id="skills" class="mt-5">
   <div class="container">
-    <span class="bg-primary text-white">Skills</span>
-    <hr class="bg-primary">
+    <div class="p-4 my-2 bg-dark text-white col-sm-12 text-center">
+      <h5>SKILLS</h5>
+    </div>
     <div class="row">
       <div class="col">
-        <div class="card mb-3">
-          <img src="/assets/f2.png" class="card-img-top" alt="" width="150" height="250">
-          <div class="card-body">
-            <h6>Html5</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                aria-valuemax="100">80%</div>
-            </div>
+        <!-- #Angular -->
+        <div class="jumbotron p-6" style="background-image: url('/assets/der.jpg');background-size: 100%;
+        background-repeat: no-repeat;">
+          <h1 class="display-4 text-white">Angular</h1>
+          <br />
+          <h6 class="text-white">Librerias</h6>
+          <span class="badge badge-pill badge-dark mx-1 my-2">Bootstrap</span>
+          <span class="badge badge-pill badge-dark mx-1 my-2">AngularMaterial</span>
+          <span class="badge badge-pill badge-dark mx-1 my-2">FlexLayout</span>
+          <span class="badge badge-pill badge-dark mx-1 my-2">Ngx-Translate</span>
+          <span class="badge badge-pill badge-dark mx-1 my-2">Ng-Bootstrap</span>
+          <h6 class="text-white">API`s</h6>
+          <span class="badge badge-pill badge-dark mx-1 my-2">GoogleMaps</span>
+          <span class="badge badge-pill badge-dark mx-1 my-2">Socket.IO</span>
+          <span class="badge badge-pill badge-dark mx-1 my-2">MapBox</span>
+          <h6 class="text-white">Nivel de Conocimiento</h6>
 
-            <h6>CSS3</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                aria-valuemax="100">80%</div>
-            </div>
-
-            <h6>Javascript(ES6)</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0"
-                aria-valuemax="100">70%</div>
-            </div>
-
-            <h6>Typescript</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0"
-                aria-valuemax="100">60%</div>
-            </div>
-            <h3 class="text-center">Frameworks</h3>
-            <h6>Angular 8</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 95%;" aria-valuenow="95" aria-valuemin="0"
-                aria-valuemax="100">95%</div>
-            </div>
-            <h3 class="text-center">Librerias</h3>
-            <h6>React</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                aria-valuemax="100">50%</div>
-            </div>
-            <h6>Bootstrap</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                aria-valuemax="100">80%</div>
-            </div>
-            <h6>Angular Material</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                aria-valuemax="100">90%
-              </div>
-            </div>
-            <h6>Flex-Layout</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0"
-                aria-valuemax="100">70%
-              </div>
-            </div>
-            <h6>Jquery</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0"
-                aria-valuemax="100">30%
-              </div>
-            </div>
+          <div class="progress">
+            <div class="progress-bar bg-dark" role="progressbar" style="width: 75%;" aria-valuenow="75"
+              aria-valuemin="0" aria-valuemax="100">75%</div>
           </div>
+
         </div>
+        <!-- #React -->
+        <div class="jumbotron p-6" style="background-image: url('/assets/mon.jpg');background-size: 100%;
+        background-repeat: no-repeat;">
+          <h1 class="display-4 text-white">React</h1>
+          <br />
+          <h6 class="text-white">Librerias</h6>
+          <span class="badge badge-pill badge-info mx-1 my-2">Libreria1</span>
+          <span class="badge badge-pill badge-info mx-1 my-2">Libreria2</span>
+          <span class="badge badge-pill badge-info mx-1 my-2">Libreria3</span>
+          <span class="badge badge-pill badge-info mx-1 my-2">Libreria4</span>
+          <span class="badge badge-pill badge-info mx-1 my-2">Libreria5</span>
+          <h6 class="text-white">API`s</h6>
+          <span class="badge badge-pill badge-info mx-1 my-2">ApiUno</span>
+          <span class="badge badge-pill badge-info mx-1 my-2">ApiDos</span>
+          <span class="badge badge-pill badge-info mx-1 my-2">ApiTres</span>
+          <h6 class="text-white">Nivel de Conocimiento</h6>
 
-      </div>
-      <!-- #backend -->
-      <div class="col">
-        <div class="card mb-3">
-          <img src="/assets/b1.png" class="card-img-top" alt="" width="150" height="250">
-          <div class="card-body">
-            <h6>Java</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0"
-                aria-valuemax="100">70%</div>
-            </div>
-
-            <h6>PHP</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                aria-valuemax="100">25%</div>
-            </div>
-            <h3 class="text-center">Frameworks</h3>
-            <h6>Node Js</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0"
-                aria-valuemax="100">70%</div>
-            </div>
-
-            <h6>Spring Boot</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                aria-valuemax="100">80%</div>
-            </div>
-
-            <h6>Express Js</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                aria-valuemax="100">50%</div>
-            </div>
-
-            <h6>Hibernate</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                aria-valuemax="100">80%</div>
-            </div>
-            <h3 class="text-center">Bases de Datos</h3>
-            <h6>MySql</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                aria-valuemax="100">85%</div>
-            </div>
-
-            <h6>PostgreSql</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0"
-                aria-valuemax="100">60%</div>
-            </div>
-
-            <h6>Firebase</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                aria-valuemax="100">80%</div>
-            </div>
-
-            <h6>Mongo DB</h6>
-            <div class="progress mx-3">
-              <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0"
-                aria-valuemax="100">70%</div>
-            </div>
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50"
+              aria-valuemin="0" aria-valuemax="100">50%</div>
           </div>
-        </div>
 
+        </div>
+        <!-- #Spring -->
+        <div class="jumbotron p-6 border" style="background-image: url('/assets/spdf.jpg');background-size: 100%;
+        background-repeat: no-repeat;">
+          <h1 class="display-4">Spring</h1>
+          <br />
+          <h6>Modulos</h6>
+          <span class="badge badge-pill badge-success mx-1 my-2">Modulo1</span>
+          <span class="badge badge-pill badge-success mx-1 my-2">Modulo2</span>
+          <span class="badge badge-pill badge-success mx-1 my-2">Modulo3</span>
+          <span class="badge badge-pill badge-success mx-1 my-2">Modulo4</span>
+          <span class="badge badge-pill badge-success mx-1 my-2">Modulo5</span>
+          <h6>Framework</h6>
+          <span class="badge badge-pill badge-success mx-1 my-2">Hibernate</span>
+          <span class="badge badge-pill badge-success mx-1 my-2">JPA</span>
+          <span class="badge badge-pill badge-success mx-1 my-2">Framework</span>
+          <h6>Nivel de Conocimiento</h6>
+
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60"
+              aria-valuemin="0" aria-valuemax="100">60%</div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -259,7 +245,9 @@
 <!-- #projects -->
 <div id="projects" class="mb-20">
   <div class="container">
-    <h2>Mis Proyectos</h2>
+    <div class="p-4 my-2 bg-dark text-white col-sm-12 text-center">
+      <h5>MIS PROYECTOS</h5>
+    </div>
     <div class="row">
       <div class="accordion col-md-12" id="accordionExample">
         <div class="card">
@@ -474,7 +462,15 @@
 <!-- #footer -->
 <div class="container-fluid bg-dark">
   <div class="row" style="align-items: center;">
-    <p class="text-white text-center mt-3 mb-3 col-md-3">Website build by Angular</p>
+    <p class="text-white text-center mt-3 mb-3 col-md-3">
+      <a href="https://www.facebook.com/nico.almiron.37266" alt="facebook"><i
+          class="fab fa-facebook fa-2x mx-5"></i></a>
+      <a href="https://www.instagram.com/?hl=es-la" alt="instagram"><i class="fab fa-instagram fa-2x mx-5"></i></a>
+      <a href="#"><i class="fab fa-github fa-2x mx-5" alt="github"></i></a>
+      <a href="#"><i class="fas fa-envelope-open-text fa-2x mx-5" alt="mail"></i></a>
+      <a href="#"><i class="fab fa-linkedin fa-2x mx-5" alt="LinkedIn"></i></a>
+      <a href="#"><i class="fab fa-whatsapp fa-2x mx-5" alt="WhatsApp"></i></a>
+    </p>
     <i class="fab fa-angular fa-3x text-white col-md-3"></i>
   </div>
 </div>
