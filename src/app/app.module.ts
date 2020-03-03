@@ -4,7 +4,7 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CarouselModule, WavesModule, ButtonsModule, CardsModule, IconsModule} from 'angular-bootstrap-md';
+import { CarouselModule,  NavbarModule, WavesModule, ButtonsModule, CardsModule, IconsModule} from 'angular-bootstrap-md';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { NoEncontradoComponent } from './components/no-encontrado/no-encontrado.component';
+import { ExampleComponent } from './components/example/example.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,7 +32,8 @@ export function createTranslateLoader(http: HttpClient) {
     ContactComponent,
     HeaderComponent,
     FooterComponent,
-    NoEncontradoComponent
+    NoEncontradoComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ export function createTranslateLoader(http: HttpClient) {
     CardsModule.forRoot(),
     CarouselModule.forRoot(),
     IconsModule,
+    NavbarModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
