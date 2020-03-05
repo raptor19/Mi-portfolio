@@ -1,7 +1,7 @@
 html,
 body,
 header,
-.about {
+.settings {
   min-height: 100vh;
 }
 
@@ -9,7 +9,7 @@ header,
   html,
   body,
   header,
-  .about {
+  .settings {
     height: 100vh;
   }
-}       
+} 

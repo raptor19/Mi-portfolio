@@ -1,0 +1,89 @@
+<h2>Gestion de Skills</h2>
+<!-- Modal Agregar Skill -->
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+    <mdb-icon class="mr-1" fas icon="plus"></mdb-icon> Agregar Skill
+</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Skill</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label for="category">Categoria</label>
+                            <select class="form-control" id="category">
+                                <option>HTML</option>
+                                <option>CSS</option>
+                                <option>JAVASCRIPT</option>
+                                <option>JAVA</option>
+                                <option>BACKEND</option>
+                                <option>OTROS</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                <label for="name">Nombre</label>
+                                <input type="text" class="form-control" id="name" placeholder="">
+                              </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Imagen</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Agregar Skill -->
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Categoria1</td>
+            <td>Nombre1</td>
+            <td>Imagen1</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Categoria1</td>
+            <td>Nombre1</td>
+            <td>Imagen1</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Categoria1</td>
+            <td>Nombre1</td>
+            <td>Imagen1</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  validatingForm: FormGroup;
   constructor() { }
 
   ngOnInit() {
+    this.validatingForm = new FormGroup({
+      modalFormAvatarPassword: new FormControl('', Validators.required)
+    });
+  }
+
+  get modalFormAvatarPassword() {
+    return this.validatingForm.get('modalFormAvatarPassword');
   }
 
 }

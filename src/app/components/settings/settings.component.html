@@ -1,0 +1,45 @@
+<!-- Settings -->
+<div class="settings">
+    <!-- Mask & flexbox options-->
+    <div class="mask d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="container-fluid">
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <!--Grid column-->
+                <div class="col-md-12 px-0">
+                    <!-- As a heading -->
+                    <nav class="navbar navbar-dark bg-dark mx-0 ">
+                        <span class="navbar-brand mb-0 h1">Settings</span>
+                    </nav>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" routerLink="/experiences" routerLinkActive="active">Experiencias</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/proyects">Proyectos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/skillss">Skills</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="/trainings">Formaciones</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-10">           
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Content -->
+    </div>
+    <!-- Mask & flexbox options-->
+</div>
+<!-- Settings -->

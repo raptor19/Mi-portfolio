@@ -1,0 +1,45 @@
+<button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+    (click)="frame.show()" mdbWavesEffect>Launch Modal
+</button>
+
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+        <!--Content-->
+        <div class="modal-content">
+
+            <!--Header-->
+            <div class="modal-header">
+                <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" alt="avatar"
+                    class="rounded-circle img-responsive">
+            </div>
+            <!--Body-->
+            <div class="modal-body mb-1">
+
+                <h5 class="mt-1 mb-2 text-center">Maria Doe</h5>
+
+                <div class="md-form ml-0 mr-0">
+                    <input type="password" type="text" id="form29" class="form-control form-control-sm ml-0" mdbInput
+                        mdbValidate [formControl]="modalFormAvatarPassword">
+                    <label for="form29" class="ml-0">Enter password</label>
+                    <mdb-error
+                        *ngIf="modalFormAvatarPassword.invalid && (modalFormAvatarPassword.dirty || modalFormAvatarPassword.touched)">
+                        Input invalid
+                    </mdb-error>
+                    <mdb-success
+                        *ngIf="modalFormAvatarPassword.valid && (modalFormAvatarPassword.dirty || modalFormAvatarPassword.touched)">
+                        Input valid
+                    </mdb-success>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button mdbBtn color="cyan" rounded="true" class="mt-1 waves-light" mdbWavesEffect>Login
+                        <mdb-icon fas icon="sign-in-alt" class="ml-1"></mdb-icon>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <!--/.Content-->
+    </div>
+</div>

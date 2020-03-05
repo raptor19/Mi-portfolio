@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { SkillsComponent } from './components/skills/skills.component';
-import { NoEncontradoComponent } from './components/no-encontrado/no-encontrado.component';
+import { ExperiencesComponent } from './components/settings/experiences/experiences.component';
+import { TrainingsComponent } from './components/settings/trainings/trainings.component';
+import { ProyectsComponent } from './components/settings/proyects/proyects.component';
+import { SkillssComponent } from './components/settings/skillss/skillss.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'projects', component: ProjectsComponent},
-  {path: 'skills', component: SkillsComponent},
-  {path: '**', component: NoEncontradoComponent},
+  {path: 'experiences', component: ExperiencesComponent},
+  {path: 'proyects', component: ProyectsComponent},
+  {path: 'skillss', component: SkillssComponent},
+  {path: 'trainings', component: TrainingsComponent},
+  {path: '**', component: ExperiencesComponent},
 ];
 
 @NgModule({

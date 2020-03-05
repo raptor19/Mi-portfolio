@@ -1,27 +1,96 @@
 <!-- Main navigation -->
 <header>
+
     <!--Navbar-->
     <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
+
         <mdb-navbar-brand>
-            <a class="logo navbar-brand waves-light" mdbWavesEffect href="#"><strong>MDB</strong></a>
+            <a class="navbar-brand" href="#">
+                <img src="assets/cristian.jpg" class="img-fluid rounded-circle" 
+                alt="Cristian" height="50" width="50" data-toggle="modal" data-target="#basicExample"
+                (click)="frame.show()" mdbWavesEffect>
+            </a>
         </mdb-navbar-brand>
+
         <links>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active waves-light" mdbWavesEffect>
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <!-- Links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect href="#home">Home<span
+                            class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <a class="nav-link" href="#">Link</a>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect href="#about">Sobre mi</a>
                 </li>
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <a class="nav-link" href="#">Profile</a>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect href="#skills">Skills</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect href="#projects">Proyectos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect href="#contact">Contacto</a>
+                </li>
+
             </ul>
+
         </links>
+        
+        <!-- Links -->
+
     </mdb-navbar>
     <!-- Navbar -->
+
+    <!-- Modal Login-->
+
+    <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Header-->
+                <div class="modal-header">
+                    <img src="assets/cristian.jpg" alt="cristian"
+                        class="rounded-circle img-responsive">
+                </div>
+                <!--Body-->
+                <div class="modal-body mb-1">
+
+                    <h5 class="mt-1 mb-2 text-center">Almiron Cristian</h5>
+
+                    <div class="md-form ml-0 mr-0">
+                        <input type="password" type="text" id="form29" class="form-control form-control-sm ml-0"
+                            mdbInput mdbValidate [formControl]="modalFormAvatarPassword">
+                        <label for="form29" class="ml-0">Clave</label>
+                        <mdb-error
+                            *ngIf="modalFormAvatarPassword.invalid && (modalFormAvatarPassword.dirty || modalFormAvatarPassword.touched)">
+                            Clave Incorrecta
+                        </mdb-error>
+                        <mdb-success
+                            *ngIf="modalFormAvatarPassword.valid && (modalFormAvatarPassword.dirty || modalFormAvatarPassword.touched)">
+                            Clave Correcta
+                        </mdb-success>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button mdbBtn color="cyan" rounded="true" class="mt-1 waves-light" mdbWavesEffect>Ingresar
+                            <mdb-icon fas icon="sign-in-alt" class="ml-1"></mdb-icon>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Modal Login-->
+
+
     <!-- Full Page Intro -->
-    <div class="view"
+    <div id="home" class="view"
         style="background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <!-- Mask & flexbox options-->
         <div class="mask rgba-purple-slight d-flex justify-content-center align-items-center">
@@ -33,7 +102,8 @@
                     <div class="col-md-12 text-center">
                         <h1 class="display-4 font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInUp">Soy Cristian
                         </h1>
-                        <h5 class="pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 wow fadeInUp" data-wow-delay="0.2s">Desarrollador web</h5>
+                        <h5 class="pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 wow fadeInUp" data-wow-delay="0.2s">
+                            Desarrollador web</h5>
 
                     </div>
                     <!--Grid column-->
@@ -45,6 +115,6 @@
         <!-- Mask & flexbox options-->
     </div>
     <!-- Full Page Intro -->
-    
+
 </header>
 <!-- Main navigation -->

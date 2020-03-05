@@ -1,0 +1,108 @@
+<h2>Gestion de Proyectos</h2>
+<!-- Modal Agregar Proyecto -->
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+    <mdb-icon class="mr-1" fas icon="plus"></mdb-icon> Agregar Proyecto
+</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Proyecto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col-md-3 mb-3">
+                            <label for="title">Titulo</label>
+                            <input type="text" class="form-control" id="title" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="description">Descripcion</label>
+                                <textarea class="form-control" id="description" rows="1"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="technologies">Tecnologias</label>
+                                <textarea class="form-control" id="technologies" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="urlWeb">Url-web</label>
+                            <input type="text" class="form-control" id="urlWeb" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="url-git">Url-codigo</label>
+                            <input type="text" class="form-control" id="url-git" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Imagen</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Agregar Proyecto -->
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Tecnologias</th>
+            <th scope="col">Url</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Titulo1</td>
+            <td>Descripcion1</td>
+            <td>Tecnologias1</td>
+            <td>Url1</td>
+            <td>Codigo1</td>
+            <td>Imagen1</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">1</th>
+            <td>Titulo1</td>
+            <td>Descripcion1</td>
+            <td>Tecnologias1</td>
+            <td>Url1</td>
+            <td>Codigo1</td>
+            <td>Imagen1</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th scope="row">1</th>
+            <td>Titulo1</td>
+            <td>Descripcion1</td>
+            <td>Tecnologias1</td>
+            <td>Url1</td>
+            <td>Codigo1</td>
+            <td>Imagen1</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

@@ -4,9 +4,12 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CarouselModule,  NavbarModule, WavesModule, ButtonsModule, CardsModule, IconsModule} from 'angular-bootstrap-md';
-
+import { CarouselModule,
+         NavbarModule, WavesModule, ButtonsModule, CardsModule,
+         IconsModule, ModalModule, InputsModule, CheckboxModule} from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// Componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
@@ -17,7 +20,24 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { NoEncontradoComponent } from './components/no-encontrado/no-encontrado.component';
 import { ExampleComponent } from './components/example/example.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ExperiencesComponent } from './components/settings/experiences/experiences.component';
+import { ProyectsComponent } from './components/settings/proyects/proyects.component';
+import { TrainingsComponent } from './components/settings/trainings/trainings.component';
+import { SkillssComponent } from './components/settings/skillss/skillss.component';
+// Services
+import { ProjectService } from './services/project.service';
+import { ExperienceService } from './services/experience.service';
+import { SkillService } from './services/skill.service';
 
+// Firebase
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './components/login/login.component';
+
+
+// Translate
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -33,19 +53,32 @@ export function createTranslateLoader(http: HttpClient) {
     HeaderComponent,
     FooterComponent,
     NoEncontradoComponent,
-    ExampleComponent
+    ExampleComponent,
+    SettingsComponent,
+    ExperiencesComponent,
+    ProyectsComponent,
+    TrainingsComponent,
+    SkillssComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     WavesModule.forRoot(),
     ButtonsModule.forRoot(),
     CardsModule.forRoot(),
     CarouselModule.forRoot(),
     IconsModule,
+    ModalModule.forRoot(),
+    InputsModule,
     NavbarModule,
+    CheckboxModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -55,7 +88,11 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   schemas: [NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [
+    ProjectService,
+    ExperienceService,
+    SkillService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
