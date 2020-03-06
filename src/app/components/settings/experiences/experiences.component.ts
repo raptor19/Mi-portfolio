@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
+import { ExperienceService} from '../../../services/experience.service';
+import { Experience } from '../../../models/experience';
 
 @Component({
   selector: 'app-experiences',
@@ -9,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ExperiencesComponent implements OnInit {
   validatingForm: FormGroup;
 
-  constructor() { }
+  constructor(private experienceService: ExperienceService) { }
 
   ngOnInit() {
     this.validatingForm = new FormGroup({
@@ -18,12 +20,19 @@ export class ExperiencesComponent implements OnInit {
     });
   }
 
-  get modalFormSubscriptionName() {
-    return this.validatingForm.get('modalFormSubscriptionName');
+  // Agregar Experiencia
+
+  onSubmit(experienceForm: NgForm) {
+    this.experienceService.addExperience(experienceForm.value);
   }
 
-  get modalFormSubscriptionEmail() {
-    return this.validatingForm.get('modalFormSubscriptionEmail');
+  // Resetear formulario
+
+  resetForm(experienceForm: NgForm) {
+    if (experienceForm != null) {
+      experienceForm.reset();
+      this.experienceService.experienceSelected = new Experience();
+    }
   }
 
 }

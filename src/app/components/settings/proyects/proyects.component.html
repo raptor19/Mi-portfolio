@@ -16,16 +16,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #proyectForm="ngForm" (ngSubmit)="onSubmit(proyectForm)">
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="title">Titulo</label>
-                            <input type="text" class="form-control" id="title" required>
+                            <input type="text" class="form-control" id="title" 
+                            required name="title" #title="ngModel">
                         </div>
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
                                 <label for="description">Descripcion</label>
-                                <textarea class="form-control" id="description" rows="1"></textarea>
+                                <textarea class="form-control" id="description" 
+                                 rows="1" name="description" #description="ngModel"></textarea>
                             </div>
                         </div>
 
@@ -34,21 +36,25 @@
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
                                 <label for="technologies">Tecnologias</label>
-                                <textarea class="form-control" id="technologies" rows="1"></textarea>
+                                <textarea class="form-control" id="technologies" rows="1"
+                                          name="technologies" #technologies="ngModel"></textarea>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="urlWeb">Url-web</label>
-                            <input type="text" class="form-control" id="urlWeb" required>
+                            <input type="text" class="form-control" id="urlWeb" 
+                                   required name="url-web" #url-web="ngModel">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="url-git">Url-codigo</label>
-                            <input type="text" class="form-control" id="url-git" required>
+                            <input type="text" class="form-control" id="url-git" 
+                                   required name="url-git" #url-git="ngModel">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Imagen</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                               required name="image" #image="ngModel">
                     </div>
                 </form>
             </div>

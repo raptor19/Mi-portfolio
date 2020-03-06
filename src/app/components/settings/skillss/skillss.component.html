@@ -16,11 +16,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #skillsForm="ngForm" (ngSubmit)="onSubmit(skillsForm)">
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <label for="category">Categoria</label>
-                            <select class="form-control" id="category">
+                            <select class="form-control" id="category" name="category" #category="ngModel">
                                 <option>HTML</option>
                                 <option>CSS</option>
                                 <option>JAVASCRIPT</option>
@@ -32,7 +32,8 @@
                         <div class="col-md-3 mb-3">
                             <div class="form-group">
                                 <label for="name">Nombre</label>
-                                <input type="text" class="form-control" id="name" placeholder="">
+                                <input type="text" class="form-control" id="name" 
+                                       placeholder="" name="name" #name="ngModel">
                               </div>
                         </div>
 
@@ -40,7 +41,8 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlFile1">Imagen</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <input type="file" class="form-control-file" 
+                               id="exampleFormControlFile1" name="image" #image="ngModel">
                     </div>
                 </form>
             </div>

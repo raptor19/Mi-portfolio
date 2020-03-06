@@ -14,11 +14,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #experienceForm="ngForm" (ngSubmit)="onSubmit(experienceForm)">
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
-                            <label for="validationDefault01">Puesto de Trabajo</label>
-                            <select class="custom-select" id="validationDefault04" required>
+                            <label for="job">Puesto de Trabajo</label>
+                            <select class="custom-select" id="job" required
+                                    name="job" #job="ngModel">
                                 <option selected disabled value="">Elegir...</option>
                                 <option>Frontend Developer</option>
                                 <option>Backend Developer</option>
@@ -28,11 +29,13 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="siteJob">Lugar</label>
-                            <input type="text" class="form-control" id="siteJob" required>
+                            <input type="text" class="form-control" 
+                                   id="siteJob" required  name="site" #site="ngModel">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="dateSince">Desde</label>
-                            <input type="date" id="dateSince" class="form-control" required>
+                            <input type="date" id="dateSince" class="form-control" 
+                                   required  name="job-input" #job="ngModel">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="dateUntil">Hasta</label>
