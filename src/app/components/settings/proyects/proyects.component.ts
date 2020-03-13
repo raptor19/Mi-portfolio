@@ -18,16 +18,13 @@ export class ProyectsComponent implements OnInit {
   // Agregar Proyecto
 
   onSubmit(proyectForm: NgForm) {
-    this.projectService.addProject(proyectForm.value);
+    
   }
 
   // Resetear formulario
 
   resetForm(proyectForm: NgForm) {
-    if (proyectForm != null) {
-      proyectForm.reset();
-      this.projectService.projectSelected = new Project();
-    }
+    
   }
 
 

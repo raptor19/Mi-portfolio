@@ -21,13 +21,17 @@
                         <div class="col-md-3 mb-3">
                             <label for="title">Titulo</label>
                             <input type="text" class="form-control" id="title" 
-                            required name="title" #title="ngModel">
+                            name="title" #title="ngModel"
+                            [(ngModel)]="project.title" [ngClass]="{'is-invalid': title.errors && title.touched}"
+                            required minlength="2">
                         </div>
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
                                 <label for="description">Descripcion</label>
                                 <textarea class="form-control" id="description" 
-                                 rows="1" name="description" #description="ngModel"></textarea>
+                                 rows="1" name="description" #description="ngModel"
+                                 [(ngModel)]="project.description" [ngClass]="{'is-invalid': description.errors && description.touched}"
+                                 required minlength="2"></textarea>
                             </div>
                         </div>
 
@@ -37,24 +41,31 @@
                             <div class="form-group">
                                 <label for="technologies">Tecnologias</label>
                                 <textarea class="form-control" id="technologies" rows="1"
-                                          name="technologies" #technologies="ngModel"></textarea>
+                                name="technologies" #technologies="ngModel"
+                                [(ngModel)]="project.technologies" [ngClass]="{'is-invalid': technologies.errors && technologies.touched}"
+                                required minlength="2"></textarea>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="urlWeb">Url-web</label>
-                            <input type="text" class="form-control" id="urlWeb" 
-                                   required name="url-web" #url-web="ngModel">
+                            <label for="urlweb">Url-web</label>
+                            <input type="text" class="form-control" id="urlweb" 
+                                   name="urlweb" #urlweb="ngModel"
+                                   [(ngModel)]="project.urlWeb" [ngClass]="{'is-invalid': urlweb.errors && urlweb.touched}"
+                                   required minlength="2">
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="url-git">Url-codigo</label>
-                            <input type="text" class="form-control" id="url-git" 
-                                   required name="url-git" #url-git="ngModel">
+                            <label for="urlgit">Url-codigo</label>
+                            <input type="text" class="form-control" id="urlgit" 
+                            name="urlgit" #urlgit="ngModel"
+                            [(ngModel)]="project.urlGit" [ngClass]="{'is-invalid': urlgit.errors && urlgit.touched}"
+                            required minlength="2">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlFile1">Imagen</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
-                               required name="image" #image="ngModel">
+                        <label for="image">Imagen</label>
+                        <input type="file" class="form-control-file" id="image"
+                               [(ngModel)]="project.image" [ngClass]="{'is-invalid': image.errors && image.touched}"
+                               required #image="ngModel">
                     </div>
                 </form>
             </div>
@@ -73,42 +84,25 @@
             <th scope="col">Titulo</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Tecnologias</th>
-            <th scope="col">Url</th>
-            <th scope="col">Codigo</th>
+            <th scope="col">UrlWeb</th>
+            <th scope="col">UrlCodigo</th>
             <th scope="col">Imagen</th>
             <th scope="col">Accion</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Titulo1</td>
-            <td>Descripcion1</td>
-            <td>Tecnologias1</td>
-            <td>Url1</td>
-            <td>Codigo1</td>
-            <td>Imagen1</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Titulo1</td>
-            <td>Descripcion1</td>
-            <td>Tecnologias1</td>
-            <td>Url1</td>
-            <td>Codigo1</td>
-            <td>Imagen1</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row">1</th>
-            <td>Titulo1</td>
-            <td>Descripcion1</td>
-            <td>Tecnologias1</td>
-            <td>Url1</td>
-            <td>Codigo1</td>
-            <td>Imagen1</td>
-            <td></td>
+        <tr *ngFor="let project of projects; let p = index">
+            <td>{{experience.id}}</td>
+            <td>{{experience.title}}</td>
+            <td>{{experience.description}}</td>
+            <td>{{experience.technologies}}</td>
+            <td>{{experience.urlWeb}}</td>
+            <td>{{experience.urlGit}}</td>
+            <td>{{experience.image}}</td>
+            <td>
+                <button type="button" mdbBtn color="info" mdbWavesEffect data-toggle="modal-modificar" data-target=".md-example-modal-lg">Modificar</button>
+                <button type="button" mdbBtn color="danger" mdbWavesEffect>Eliminar</button>
+            </td>
         </tr>
     </tbody>
 </table>

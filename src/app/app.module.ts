@@ -9,6 +9,7 @@ import { CarouselModule,
          IconsModule, ModalModule, InputsModule, CheckboxModule} from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 // Componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -25,6 +26,7 @@ import { ExperiencesComponent } from './components/settings/experiences/experien
 import { ProyectsComponent } from './components/settings/proyects/proyects.component';
 import { TrainingsComponent } from './components/settings/trainings/trainings.component';
 import { SkillssComponent } from './components/settings/skillss/skillss.component';
+import { LoginComponent } from './components/login/login.component';
 // Services
 import { ProjectService } from './services/project.service';
 import { ExperienceService } from './services/experience.service';
@@ -32,9 +34,12 @@ import { SkillService } from './services/skill.service';
 
 // Firebase
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './components/login/login.component';
+import { TrainingService } from './services/training.service';
+
 
 
 // Translate
@@ -65,11 +70,14 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp(environment.firebase, 'app-cristian'),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FlashMessagesModule.forRoot(),
     WavesModule.forRoot(),
     ButtonsModule.forRoot(),
     CardsModule.forRoot(),
@@ -91,7 +99,9 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     ProjectService,
     ExperienceService,
-    SkillService
+    SkillService,
+    TrainingService,
+    { provide: FirestoreSettingsToken, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-export class Experience {
+export interface Experience {
     id: string;
     job: string;
     site: string;
@@ -7,7 +7,4 @@ export class Experience {
     description: string;
     technologies: string;
 
-    constructor() {
-
-    }
 }

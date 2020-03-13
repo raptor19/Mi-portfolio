@@ -1,52 +1,72 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { Project } from '../models/project';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProjectService {
 
-  projectList: AngularFireList<any>;
-  projectSelected: Project = new Project();
+  projectsColeccion: AngularFirestoreCollection<Project>;
+  projectDoc: AngularFirestoreDocument<Project>;
+  projects: Observable<Project[]>;
+  project: Observable<Project>;
 
-  constructor(private firebase: AngularFireDatabase ) { }
+  constructor(private db: AngularFirestore) {
+    this.projectsColeccion = db.collection('projects', ref => ref.orderBy('title', 'asc'));
+  }
 
-  // Traer todos los proyectos
-  getProjects() {
-    return this.projectList = this.firebase.list('projects');
+  // consultar todos los projectos
+  getProjects(): Observable<Project[]> {
+    // Obtener los proyectos
+    this.projects = this.projectsColeccion.snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(action => {
+          const dat = action.payload.doc.data() as Project;
+          dat.id = action.payload.doc.id;
+          return dat;
+        });
+      })
+    );
+    return this.projects;
   }
 
   // Agregar proyecto
-  addProject(project: Project) {
-    this.projectList.push({
-      id: project.id,
-      title: project.title,
-      description: project.description,
-      technologies: project.technologies,
-      urlWeb: project.urlWeb,
-      urlGit: project.urlGit,
-      image: project.image
 
-    });
+  addProject(project: Project) {
+    this.projectsColeccion.add(project);
   }
 
-  // Actualizar un proyecto
-  updateProject(project: Project) {
-    this.projectList.update(project.id, {
-      title: project.title,
-      description: project.description,
-      technologies: project.technologies,
-      urlWeb: project.urlWeb,
-      urlGit: project.urlGit,
-      image: project.image
-    });
+  // Consultar un proyecto a partir de su id
+
+  getProject(id: string) {
+    this.projectDoc = this.db.doc<Project>(`${id}`);
+    this.project = this.projectDoc.snapshotChanges().pipe(
+      map(action => {
+        if (action.payload.exists === false) {
+          return null;
+        } else {
+          const dat = action.payload.data() as Project;
+          dat.id = action.payload.id;
+          return dat;
+        }
+      })
+    );
+    return this.project;
+  }
+
+  // Modificar un Proyecto
+
+  modifyProject(project: Project) {
+    this.projectDoc = this.db.doc(`${project.id}`);
+    this.projectDoc.update(project);
   }
 
   // Eliminar un proyecto
 
-  deleteProject(id: string) {
-    this.projectList.remove(id);
+  deleteExperience(project: Project) {
+    this.projectDoc = this.db.doc(`${project.id}`);
+    this.projectDoc.delete();
   }
 
 

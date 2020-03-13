@@ -1,51 +1,73 @@
 import { Injectable } from '@angular/core';
-import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { Experience } from '../models/experience';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ExperienceService {
-  experienceList: AngularFireList<any>;
-  experienceSelected: Experience = new Experience();
 
-  constructor(private firebase: AngularFireDatabase) { }
+  experiencesColeccion: AngularFirestoreCollection<Experience>;
+  experienceDoc: AngularFirestoreDocument<Experience>;
+  experiences: Observable<Experience[]>;
+  experience: Observable<Experience>;
+
+  constructor(private db: AngularFirestore) {
+    this.experiencesColeccion = db.collection('experiences', ref => ref.orderBy('job', 'asc'));
+   }
 
   // consultar todos las experiencias
-  getProjects() {
-    return this.experienceList = this.firebase.list('experiences');
-  }
+  getExperiences(): Observable<Experience[]> {
+    // Obtener las expereincias
+    this.experiences = this.experiencesColeccion.snapshotChanges().pipe(
+        map(changes => {
+            return changes.map(action => {
+                const dat = action.payload.doc.data() as Experience;
+                dat.id = action.payload.doc.id;
+                return dat;
+            });
+        })
+    );
+    return this.experiences;
+}
 
   // Agregar experiencia
 
   addExperience(experience: Experience) {
-    this.experienceList.push({
-      id: experience.id,
-      job: experience.job,
-      site: experience.site,
-      since: experience.since,
-      until: experience.until,
-      description: experience.description,
-      technologies: experience.technologies
-    });
-  }
+    this.experiencesColeccion.add(experience);
+    console.log(experience);
+    console.log('experiencia agregada');
+}
 
-  // Actualizar una experiencia
+// Consultar una experiencia a partir de su id
 
-  updateExperience(experience: Experience) {
-    this.experienceList.update(experience.id, {
-      job: experience.job,
-      site: experience.site,
-      since: experience.since,
-      until: experience.until,
-      description: experience.description,
-      technologies: experience.technologies
-    });
-  }
+getExperience(id: string) {
+  this.experienceDoc = this.db.doc<Experience>(`${id}`);
+  this.experience = this.experienceDoc.snapshotChanges().pipe(
+      map(action => {
+          if (action.payload.exists === false) {
+              return null;
+          } else {
+              const dat = action.payload.data() as Experience;
+              dat.id = action.payload.id;
+              return dat;
+          }
+      })
+  );
+  return this.experience;
+}
 
-  // Eliminar una experiencia
+// Modificar una Experiencia
 
-  deletesExperience(id: string) {
-    this.experienceList.remove(id);
-  }
+modifyExperience(experience: Experience) {
+  this.experienceDoc = this.db.doc(`${experience.id}`);
+  this.experienceDoc.update(experience);
+}
+
+// Eliminar una experiencia
+
+deleteExperience(experience: Experience) {
+  this.experienceDoc = this.db.doc(`experience/${experience.id}`);
+  this.experienceDoc.delete();
+}
 }

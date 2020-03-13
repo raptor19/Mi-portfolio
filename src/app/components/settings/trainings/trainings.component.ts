@@ -18,16 +18,13 @@ export class TrainingsComponent implements OnInit {
   // Agregar Formacion
 
   onSubmit(trainingsForm: NgForm) {
-    this.trainingService.addTrainings(trainingsForm.value);
+   
   }
 
   // Resetear formulario
 
   resetForm(trainingForm: NgForm) {
-    if (trainingForm != null) {
-      trainingForm.reset();
-      this.trainingService.trainingSelected = new Training();
-    }
+    
   }
 
 }

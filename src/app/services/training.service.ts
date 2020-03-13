@@ -1,46 +1,71 @@
 import { Injectable } from '@angular/core';
-import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { Training } from '../models/training';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TrainingService {
-  trainingList: AngularFireList<any>;
-  trainingSelected: Training = new Training();
+  trainingsColeccion: AngularFirestoreCollection<Training>;
+  trainingDoc: AngularFirestoreDocument<Training>;
+  trainings: Observable<Training[]>;
+  training: Observable<Training>;
 
-  constructor(private firebase: AngularFireDatabase) { }
+  constructor(private db: AngularFirestore) {
+    this.trainingsColeccion = db.collection('trainings', ref => ref.orderBy('title', 'asc'));
+  }
 
-  // Traer todos los training
-  getTraining() {
-    return this.trainingList = this.firebase.list('trainings');
+  // consultar todos los trainings
+  getTrainings(): Observable<Training[]> {
+    // Obtener los trainings
+    this.trainings = this.trainingsColeccion.snapshotChanges().pipe(
+      map(changes => {
+        return changes.map(action => {
+          const dat = action.payload.doc.data() as Training;
+          dat.id = action.payload.doc.id;
+          return dat;
+        });
+      })
+    );
+    return this.trainings;
   }
 
   // Agregar training
 
-  addTrainings(training: Training) {
-    this.trainingList.push({
-      id: training.id,
-      title: training.title,
-      subtitle: training.subtitle,
-      detail: training.detail
-    });
+  addTraining(training: Training) {
+    this.trainingsColeccion.add(training);
   }
 
-  // Actualizar un training
+  // Consultar un training a partir de su id
 
-  updateTrainig(training: Training) {
-    this.trainingList.update(training.id, {
-      title: training.title,
-      subtitle: training.subtitle,
-      detail: training.detail
-    });
+  getTraining(id: string) {
+    this.trainingDoc = this.db.doc<Training>(`${id}`);
+    this.training = this.trainingDoc.snapshotChanges().pipe(
+      map(action => {
+        if (action.payload.exists === false) {
+          return null;
+        } else {
+          const dat = action.payload.data() as Training;
+          dat.id = action.payload.id;
+          return dat;
+        }
+      })
+    );
+    return this.training;
   }
 
-  // Eliminar un training
+  // Modificar un Training
 
-  deletestrainig(id: string) {
-    this.trainingList.remove(id);
+  modifyTraining(training: Training) {
+    this.trainingDoc = this.db.doc(`${training.id}`);
+    this.trainingDoc.update(training);
+  }
+
+  // Eliminar un Training
+
+  deleteSkill(training: Training) {
+    this.trainingDoc = this.db.doc(`${training.id}`);
+    this.trainingDoc.delete();
   }
 
 }

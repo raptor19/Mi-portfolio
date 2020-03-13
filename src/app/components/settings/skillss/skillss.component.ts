@@ -18,16 +18,13 @@ export class SkillssComponent implements OnInit {
   // Agregar Skill
 
   onSubmit(skillsForm: NgForm) {
-    this.skillService.addSkill(skillsForm.value);
+    
   }
 
   // Resetear formulario
 
   resetForm(skillsForm: NgForm) {
-    if (skillsForm != null) {
-      skillsForm.reset();
-      this.skillService.skillSelected = new Skill();
-    }
+    
   }
 
 }
