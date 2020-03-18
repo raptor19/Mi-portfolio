@@ -1,86 +1,16 @@
 <h2>Gestion de Proyectos</h2>
-<!-- Modal Agregar Proyecto -->
-<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+
+<!-- Boton Agregar Proyecto -->
+<button type="button" class="btn btn-primary p-2" data-toggle="modal" data-target=".bd-example-modal-lg">
     <mdb-icon class="mr-1" fas icon="plus"></mdb-icon> Agregar Proyecto
 </button>
+<!-- Boton Agregar Proyecto -->
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Proyecto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form #proyectForm="ngForm" (ngSubmit)="onSubmit(proyectForm)">
-                    <div class="form-row">
-                        <div class="col-md-3 mb-3">
-                            <label for="title">Titulo</label>
-                            <input type="text" class="form-control" id="title" 
-                            name="title" #title="ngModel"
-                            [(ngModel)]="project.title" [ngClass]="{'is-invalid': title.errors && title.touched}"
-                            required minlength="2">
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="description">Descripcion</label>
-                                <textarea class="form-control" id="description" 
-                                 rows="1" name="description" #description="ngModel"
-                                 [(ngModel)]="project.description" [ngClass]="{'is-invalid': description.errors && description.touched}"
-                                 required minlength="2"></textarea>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <label for="technologies">Tecnologias</label>
-                                <textarea class="form-control" id="technologies" rows="1"
-                                name="technologies" #technologies="ngModel"
-                                [(ngModel)]="project.technologies" [ngClass]="{'is-invalid': technologies.errors && technologies.touched}"
-                                required minlength="2"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="urlweb">Url-web</label>
-                            <input type="text" class="form-control" id="urlweb" 
-                                   name="urlweb" #urlweb="ngModel"
-                                   [(ngModel)]="project.urlWeb" [ngClass]="{'is-invalid': urlweb.errors && urlweb.touched}"
-                                   required minlength="2">
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="urlgit">Url-codigo</label>
-                            <input type="text" class="form-control" id="urlgit" 
-                            name="urlgit" #urlgit="ngModel"
-                            [(ngModel)]="project.urlGit" [ngClass]="{'is-invalid': urlgit.errors && urlgit.touched}"
-                            required minlength="2">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Imagen</label>
-                        <input type="file" class="form-control-file" id="image"
-                               [(ngModel)]="project.image" [ngClass]="{'is-invalid': image.errors && image.touched}"
-                               required #image="ngModel">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal Agregar Proyecto -->
+<!-- Tabla de Proyectos -->
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Id</th>
             <th scope="col">Titulo</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Tecnologias</th>
@@ -91,18 +21,111 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let project of projects; let p = index">
-            <td>{{experience.id}}</td>
-            <td>{{experience.title}}</td>
-            <td>{{experience.description}}</td>
-            <td>{{experience.technologies}}</td>
-            <td>{{experience.urlWeb}}</td>
-            <td>{{experience.urlGit}}</td>
-            <td>{{experience.image}}</td>
+        <tr *ngFor="let proyect of proyects; let p = index">
+            <td>{{proyect.title}}</td>
+            <td>{{proyect.description}}</td>
+            <td>{{proyect.technologies}}</td>
+            <td>{{proyect.urlWeb}}</td>
+            <td>{{proyect.urlGit}}</td>
+            <td>{{proyect.image}}</td>
             <td>
-                <button type="button" mdbBtn color="info" mdbWavesEffect data-toggle="modal-modificar" data-target=".md-example-modal-lg">Modificar</button>
-                <button type="button" mdbBtn color="danger" mdbWavesEffect>Eliminar</button>
+                <a routerLink="/proyect/edit/{{proyect.id}}" class="btn btn-primary m-0 px-2 py-0">
+                    <i class="fas fa-angle-double-right"></i> Editar
+                </a>
             </td>
         </tr>
     </tbody>
 </table>
+<!-- Tabla de Proyectos -->
+
+<!-- Modal Agregar Proyecto -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Proyecto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()"
+                    #btnCloseAdd>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <flash-messages></flash-messages>
+            <form #proyectForm="ngForm" (ngSubmit)="addProyect(proyectForm)">
+                <div class="modal-body">
+
+                    <div class="form-row">
+
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                <label for="titleAdd">Titulo</label>
+                                <input type="text" class="form-control" id="titleAdd" name="title" #title="ngModel"
+                                    [(ngModel)]="proyect.title" required minlength="2">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="md-form">
+                                        <label for="input_text">Descripcion</label>
+                                        <textarea class="md-textarea form-control " rows="1" id="input_text" type="text"
+                                            length="120" mdbCharCounter mdbInput></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Tecnologias</span>
+                                    </div>
+                                    <textarea class="form-control" aria-label="With textarea" name="technologies"
+                                        #technologies="ngModel" [(ngModel)]="proyect.technologies" required
+                                        minlength="2">
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                <label for="urlwebAdd">Url-Web</label>
+                                <input type="text" class="form-control" id="urlwebAdd" name="urlweb" #urlweb="ngModel"
+                                    [(ngModel)]="proyect.urlWeb" required minlength="2">
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                <label for="urlgitAdd">Url-Git</label>
+                                <input type="text" class="form-control" id="urlgitAdd" name="urlgit" #urlgit="ngModel"
+                                    [(ngModel)]="proyect.urlGit" required minlength="2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="imageAdd">Imagen</label>
+                                    <input type="file" class="form-control-file" id="imageAdd">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Agregar Proyecto -->

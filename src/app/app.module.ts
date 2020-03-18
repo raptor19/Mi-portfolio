@@ -39,6 +39,10 @@ import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/fi
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { TrainingService } from './services/training.service';
+import { EditExperienceComponent } from './components/settings/experiences/edit-experience/edit-experience.component';
+import { EditTrainingComponent } from './components/settings/trainings/edit-training/edit-training.component';
+import { EditProyectComponent } from './components/settings/proyects/edit-proyect/edit-proyect.component';
+import { EditSkillComponent } from './components/settings/skillss/edit-skill/edit-skill.component';
 
 
 
@@ -64,7 +68,11 @@ export function createTranslateLoader(http: HttpClient) {
     ProyectsComponent,
     TrainingsComponent,
     SkillssComponent,
-    LoginComponent
+    LoginComponent,
+    EditExperienceComponent,
+    EditTrainingComponent,
+    EditProyectComponent,
+    EditSkillComponent
   ],
   imports: [
     BrowserModule,

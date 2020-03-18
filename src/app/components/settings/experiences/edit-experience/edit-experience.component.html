@@ -1,0 +1,99 @@
+<form #clienteForm="ngForm" (ngSubmit)="save(clienteForm)">
+    <!--Botones-->
+    <section id="details">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Editar Experiencia</h4>
+                        </div>
+                        <flash-messages></flash-messages>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-group">
+                                        <label for="jobModify">Puesto</label>
+                                        <input type="text" class="form-control" id="jobModify" name="job" #job="ngModel"
+                                            [(ngModel)]="experience.job" required minlength="2">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-group">
+                                        <label for="siteModify">Lugar</label>
+                                        <input type="text" class="form-control" id="siteModify" name="site" #site="ngModel"
+                                            [(ngModel)]="experience.site" required minlength="2">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-group">
+                                        <label for="sinceModify">Desde</label>
+                                        <input type="date" class="form-control" id="sinceModify" name="since" #since="ngModel"
+                                            [(ngModel)]="experience.since" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-group">
+                                        <label for="untilModify">Hasta</label>
+                                        <input type="date" class="form-control" id="untilModify" name="until" #until="ngModel"
+                                            [(ngModel)]="experience.until" required>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Descripcion</span>
+                                            </div>
+                                            <textarea class="form-control" aria-label="With textarea" name="description"
+                                                #description="ngModel" [(ngModel)]="experience.description"
+                                                required minlength="2"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Tecnologias</span>
+                                            </div>
+                                            <textarea class="form-control" aria-label="With textarea"
+                                                name="technologies" #technologies="ngModel"
+                                                [(ngModel)]="experience.technologies" required minlength="2">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a routerLink="/experiences" class="btn btn-info btn-block">
+                                        <i class="fas fa-arrow-left"></i> Volver
+                                    </a>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="fas fa-check"></i> Guardar
+                                    </button>
+                                </div>
+                                <div class="col-md-3">
+                                    <a (click)="delete()" class="btn btn-danger btn-block">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</form>

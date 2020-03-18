@@ -1,7 +1,7 @@
 <h2>Gestion de Experiencias</h2>
 
 <!-- Boton Agregar Experiencia -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+<button type="button" class="btn btn-primary p-2" data-toggle="modal" data-target=".bd-example-modal-lg">
     <mdb-icon class="mr-1" fas icon="plus"></mdb-icon> Agregar Experiencia
 </button>
 
@@ -23,31 +23,31 @@
                     <div class="form-row">
                         <div class="col-md-3 mb-3">
                             <div class="form-group">
-                                <label for="job">Puesto</label>
-                                <input type="text" class="form-control" id="job" name="job" #job="ngModel"
+                                <label for="jobAdd">Puesto</label>
+                                <input type="text" class="form-control" id="jobAdd" name="job" #job="ngModel"
                                     [(ngModel)]="experience.job" required minlength="2">
 
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="form-group">
-                                <label for="site">Lugar</label>
-                                <input type="text" class="form-control" id="site" name="site" #site="ngModel"
+                                <label for="siteAdd">Lugar</label>
+                                <input type="text" class="form-control" id="siteAdd" name="site" #site="ngModel"
                                     [(ngModel)]="experience.site" required minlength="2">
 
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="form-group">
-                                <label for="since">Desde</label>
-                                <input type="date" class="form-control" id="since" name="since" #since="ngModel"
+                                <label for="sinceAdd">Desde</label>
+                                <input type="date" class="form-control" id="sinceAdd" name="since" #since="ngModel"
                                     [(ngModel)]="experience.since" required>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <div class="form-group">
-                                <label for="until">Hasta</label>
-                                <input type="date" class="form-control" id="since" name="until" #until="ngModel"
+                                <label for="untilAdd">Hasta</label>
+                                <input type="date" class="form-control" id="untilAdd" name="until" #until="ngModel"
                                     [(ngModel)]="experience.until" required>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        (click)="closeModal()">Cerrar</button>
+                        >Cerrar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
@@ -114,99 +114,15 @@
             <td>{{experience.description}}</td>
             <td>{{experience.technologies}}</td>
             <td>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-                    (click)="onEdit(experience)">
-                    Modificar
-                </button>
-
-                <button type="button" mdbBtn color="danger" mdbWavesEffect (click)="deleteExperience(experience)">
-                    Eliminar
-                </button>
+                <a routerLink="/experience/edit/{{experience.id}}" class="btn btn-primary m-0 px-2 py-0">
+                    <i class="fas fa-angle-double-right"></i> Editar
+                </a>
             </td>
         </tr>
     </tbody>
 </table>
 <!-- Tabla de Experiencias -->
 
-<!-- Modal Modificar-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modificar Experiencia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #btnCloseMod>
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form>
-                <div class="modal-body">
-                    <flash-messages></flash-messages>
-                    <div class="form-row">
-                        <div class="col-md-3 mb-3">
-                            <div class="form-group">
-                                <label for="jobmod">Puesto</label>
-                                <input type="text" class="form-control" id="jobmod" name="jobmod" #jobmod="ngModel"
-                                    [(ngModel)]="experienceSelected.job">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <div class="form-group">
-                                <label for="sitemod">Lugar</label>
-                                <input type="text" class="form-control" id="sitemod" name="sitemod" #sitemod="ngModel"
-                                    [(ngModel)]="experienceSelected.site">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <div class="form-group">
-                                <label for="sincemod">Desde</label>
-                                <input type="date" id="sincemod" class="form-control" name="sincemod" #sincemod="ngModel"
-                                    [(ngModel)]="experienceSelected.since">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <div class="form-group">
-                                <label for="untilmod">Hasta</label>
-                                <input type="date" id="untilmod" class="form-control" name="untilmod" #untilmod="ngModel"
-                                    [(ngModel)]="experienceSelected.until">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Descripcion</span>
-                                    </div>
-                                    <textarea class="form-control" aria-label="With textarea" name="descriptionmod"
-                                        #description="ngModel" [(ngModel)]="experienceSelected.description" required
-                                        minlength="2">
-                     </textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Tecnologias</span>
-                                    </div>
-                                    <textarea class="form-control" aria-label="With textarea" name="technologiesmod"
-                                        #technologies="ngModel" [(ngModel)]="experienceSelected.technologies" required
-                                        minlength="2"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        >Cerrar</button>
-                    <button type="button" class="btn btn-primary" (click)="modExperience()">Actualizar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- Modal Modificar-->
+
+
+

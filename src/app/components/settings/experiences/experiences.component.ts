@@ -4,6 +4,7 @@ import { ExperienceService} from '../../../services/experience.service';
 import { Experience } from '../../../models/experience';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
+
 @Component({
   selector: 'app-experiences',
   templateUrl: './experiences.component.html',
@@ -30,6 +31,7 @@ export class ExperiencesComponent implements OnInit {
     description: '',
     technologies: '',
   };
+  idSelected: string;
 
   @ViewChild('experienceForm', {static: false}) experienceForm: NgForm;
   @ViewChild('btnCloseAdd', {static: false}) btnCloseAdd: ElementRef;
@@ -45,8 +47,15 @@ export class ExperiencesComponent implements OnInit {
       });
   }
 
+  // Seleccionar experiencia
+
   onEdit(experience: Experience) {
-    this.experienceSelected = experience;
+    this.idSelected = experience.id;
+    console.log(this.idSelected);
+    console.log('asdadasdadsasdasd');
+    /*this.experienceService.getExperience(this.idSelected).subscribe(exp => {
+      this.experienceSelected = exp;
+    });*/
   }
 
   // Agregar Experiencia
@@ -67,24 +76,28 @@ export class ExperiencesComponent implements OnInit {
 
   // Modificar experiencia
 
-  modExperience() {
-    if (this.experienceSelected == null) {
+  modExperience({ value, valid }: { value: Experience, valid: boolean }) {
+    if (!valid) {
       this.flashMessages.show('Por favor llena el formulario correctamente', {
         cssClass: 'alert-danger', timeout: 4000
       });
     } else {
-      // modificar la experiencia
-      alert('entro');
-      this.experienceService.modifyExperience(this.experienceSelected);
-      alert('entro');
+      // modifico la experiencia
+      console.log(value);
+      /* this.experienceService.modifyExperience(value);
+      this.flashMessages.show('Experiencia modificada', {
+        cssClass: 'alert-danger', timeout: 4000
+      });*/
       this.btnCloseMod.nativeElement.click();
     }
   }
+
 
   // Eliminar Experiencia
 
   deleteExperience(experience: Experience) {
     if (confirm('¿Seguro que desea elminiar la experiencia?')) {
+      console.log(experience);
       this.experienceService.deleteExperience(experience);
       this.flashMessages.show('Experiencia eliminada', {
         cssClass: 'alert-info',
