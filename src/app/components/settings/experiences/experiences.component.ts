@@ -35,7 +35,6 @@ export class ExperiencesComponent implements OnInit {
 
   @ViewChild('experienceForm', {static: false}) experienceForm: NgForm;
   @ViewChild('btnCloseAdd', {static: false}) btnCloseAdd: ElementRef;
-  @ViewChild('btnCloseMod', {static: false}) btnCloseMod: ElementRef;
 
   constructor(private experienceService: ExperienceService,
               private flashMessages: FlashMessagesService) { }
@@ -71,38 +70,6 @@ export class ExperiencesComponent implements OnInit {
       this.experienceService.addExperience(value);
       this.experienceForm.resetForm();
       this.btnCloseAdd.nativeElement.click();
-    }
-  }
-
-  // Modificar experiencia
-
-  modExperience({ value, valid }: { value: Experience, valid: boolean }) {
-    if (!valid) {
-      this.flashMessages.show('Por favor llena el formulario correctamente', {
-        cssClass: 'alert-danger', timeout: 4000
-      });
-    } else {
-      // modifico la experiencia
-      console.log(value);
-      /* this.experienceService.modifyExperience(value);
-      this.flashMessages.show('Experiencia modificada', {
-        cssClass: 'alert-danger', timeout: 4000
-      });*/
-      this.btnCloseMod.nativeElement.click();
-    }
-  }
-
-
-  // Eliminar Experiencia
-
-  deleteExperience(experience: Experience) {
-    if (confirm('¿Seguro que desea elminiar la experiencia?')) {
-      console.log(experience);
-      this.experienceService.deleteExperience(experience);
-      this.flashMessages.show('Experiencia eliminada', {
-        cssClass: 'alert-info',
-        timeout: 4000
-      });
     }
   }
 

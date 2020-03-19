@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Project } from '../models/project';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, finalize } from 'rxjs/operators';
 
 @Injectable()
 export class ProjectService {
@@ -11,12 +12,16 @@ export class ProjectService {
   projectDoc: AngularFirestoreDocument<Project>;
   projects: Observable<Project[]>;
   project: Observable<Project>;
+  filePath: any;
+  dowloadUrl: Observable<string>;
 
-  constructor(private db: AngularFirestore) {
-    this.projectsColeccion = db.collection('projects', ref => ref.orderBy('title', 'asc'));
+  constructor(private db: AngularFirestore,
+              private storage: AngularFireStorage) {
+                this.projectsColeccion = db.collection('proyects', ref => ref.orderBy('title', 'asc'));
   }
 
-  // consultar todos los projectos
+  // Consultar todos los proyectos
+
   getProjects(): Observable<Project[]> {
     // Obtener los proyectos
     this.projects = this.projectsColeccion.snapshotChanges().pipe(
@@ -34,21 +39,31 @@ export class ProjectService {
   // Agregar proyecto
 
   addProject(project: Project) {
-    this.projectsColeccion.add(project);
+    let proyectAux: Project;
+    proyectAux = {
+      title: project.title,
+      urlGit: project.urlGit,
+      urlWeb: project.urlWeb,
+      fileRef: this.filePath,
+      description: project.description,
+      technologies: project.technologies,
+      image: this.dowloadUrl
+    };
+    this.projectsColeccion.add(proyectAux);
   }
 
   // Consultar un proyecto a partir de su id
 
   getProject(id: string) {
-    this.projectDoc = this.db.doc<Project>(`${id}`);
+    this.projectDoc = this.db.doc<Project>(`proyects/${id}`);
     this.project = this.projectDoc.snapshotChanges().pipe(
-      map(action => {
-        if (action.payload.exists === false) {
+      map(accion => {
+        if (accion.payload.exists === false) {
           return null;
         } else {
-          const dat = action.payload.data() as Project;
-          dat.id = action.payload.id;
-          return dat;
+          const datos = accion.payload.data() as Project;
+          datos.id = accion.payload.id;
+          return datos;
         }
       })
     );
@@ -58,16 +73,38 @@ export class ProjectService {
   // Modificar un Proyecto
 
   modifyProject(project: Project) {
-    this.projectDoc = this.db.doc(`${project.id}`);
+    this.projectDoc = this.db.doc(`proyects/${project.id}`);
     this.projectDoc.update(project);
   }
 
-  // Eliminar un proyecto
 
-  deleteExperience(project: Project) {
-    this.projectDoc = this.db.doc(`${project.id}`);
+  // Eliminar un Proyecto
+
+  deleteProject(project: Project) {
+    this.projectDoc = this.db.doc(`proyects/${project.id}`);
     this.projectDoc.delete();
   }
 
+  // Pre-agregar proyecto
+  preAddAndUpdatePost(project: Project, image: File): void {
+    this.uploadImage(project, image);
+  }
+
+  // Subir imagen
+
+  private uploadImage(project: Project, image: File) {
+    this.filePath = `image/${image.name}`;
+    const fileRef = this.storage.ref(this.filePath);
+    const task = this.storage.upload(this.filePath, image);
+    task.snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(urlImage => {
+            this.dowloadUrl = urlImage;
+            this.addProject(project);
+          });
+        })
+      ).subscribe();
+  }
 
 }

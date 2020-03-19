@@ -82,8 +82,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        >Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
@@ -93,36 +92,34 @@
 <!-- Modal Agregar experiencia -->
 
 <!-- Tabla de Experiencias -->
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Puesto</th>
-            <th scope="col">Lugar</th>
-            <th scope="col">Desde</th>
-            <th scope="col">Hasta</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Tecnologias</th>
-            <th scope="col">Accion</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let experience of experiences; let e = index">
-            <td>{{experience.job}}</td>
-            <td>{{experience.site}}</td>
-            <td>{{experience.since |date:"dd-MM-yyyy"}}</td> <!-- .toDate() | date:"shortDate" -->
-            <td>{{experience.until |date:"dd-MM-yyyy"}}</td>
-            <td>{{experience.description}}</td>
-            <td>{{experience.technologies}}</td>
-            <td>
-                <a routerLink="/experience/edit/{{experience.id}}" class="btn btn-primary m-0 px-2 py-0">
-                    <i class="fas fa-angle-double-right"></i> Editar
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-responsive-xl">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Puesto</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Desde</th>
+                <th scope="col">Hasta</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Tecnologias</th>
+                <th scope="col">Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let experience of experiences; let e = index">
+                <td>{{experience.job}}</td>
+                <td>{{experience.site}}</td>
+                <td>{{experience.since |date:"dd-MM-yyyy"}}</td> <!-- .toDate() | date:"shortDate" -->
+                <td>{{experience.until |date:"dd-MM-yyyy"}}</td>
+                <td>{{experience.description}}</td>
+                <td>{{experience.technologies}}</td>
+                <td>
+                    <a routerLink="/experience/edit/{{experience.id}}" class="btn btn-primary m-0 px-2 py-0">
+                        <i class="fas fa-angle-double-right"></i> Editar
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <!-- Tabla de Experiencias -->
-
-
-
-

@@ -35,7 +35,8 @@ import { SkillService } from './services/skill.service';
 // Firebase
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AngularFirestoreModule, FirestoreSettingsToken, AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { TrainingService } from './services/training.service';
@@ -80,6 +81,7 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase, 'app-cristian'),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     AppRoutingModule,
     FormsModule,
@@ -107,6 +109,7 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     ProjectService,
     ExperienceService,
+    AngularFireStorageModule,
     SkillService,
     TrainingService,
     { provide: FirestoreSettingsToken, useValue: {}}

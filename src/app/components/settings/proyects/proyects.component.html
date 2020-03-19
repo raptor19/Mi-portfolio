@@ -27,7 +27,7 @@
             <td>{{proyect.technologies}}</td>
             <td>{{proyect.urlWeb}}</td>
             <td>{{proyect.urlGit}}</td>
-            <td>{{proyect.image}}</td>
+            <td>{{proyect.fileRef}}</td>
             <td>
                 <a routerLink="/proyect/edit/{{proyect.id}}" class="btn btn-primary m-0 px-2 py-0">
                     <i class="fas fa-angle-double-right"></i> Editar
@@ -45,18 +45,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Agregar Proyecto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()"
-                    #btnCloseAdd>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                    #btnCloseAddP>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <flash-messages></flash-messages>
-            <form #proyectForm="ngForm" (ngSubmit)="addProyect(proyectForm)">
-                <div class="modal-body">
+            <form #proyectForm="ngForm" (ngSubmit)="addProyect(proyectForm.value)">
+                <div class="modal-body mt-3">
 
                     <div class="form-row">
 
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="titleAdd">Titulo</label>
                                 <input type="text" class="form-control" id="titleAdd" name="title" #title="ngModel"
@@ -64,22 +64,39 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="urlWebAdd">Url-Web</label>
+                                <input type="text" class="form-control" id="urlWebAdd" name="urlWeb" #urlWeb="ngModel"
+                                    [(ngModel)]="proyect.urlWeb" required minlength="2">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="urlGitAdd">Url-Git</label>
+                                <input type="text" class="form-control" id="urlGitAdd" name="urlGit" #urlGit="ngModel"
+                                    [(ngModel)]="proyect.urlGit" required minlength="2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="md-form">
-                                        <label for="input_text">Descripcion</label>
-                                        <textarea class="md-textarea form-control " rows="1" id="input_text" type="text"
-                                            length="120" mdbCharCounter mdbInput></textarea>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Descripcion</span>
                                     </div>
+                                    <textarea class="form-control" aria-label="With textarea" name="description"
+                                        #description="ngModel" [(ngModel)]="proyect.description" required minlength="2">
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -92,20 +109,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3">
-                            <div class="form-group">
-                                <label for="urlwebAdd">Url-Web</label>
-                                <input type="text" class="form-control" id="urlwebAdd" name="urlweb" #urlweb="ngModel"
-                                    [(ngModel)]="proyect.urlWeb" required minlength="2">
-                            </div>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <div class="form-group">
-                                <label for="urlgitAdd">Url-Git</label>
-                                <input type="text" class="form-control" id="urlgitAdd" name="urlgit" #urlgit="ngModel"
-                                    [(ngModel)]="proyect.urlGit" required minlength="2">
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="form-row">
@@ -113,7 +117,8 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <label for="imageAdd">Imagen</label>
-                                    <input type="file" class="form-control-file" id="imageAdd">
+                                    <input type="file" class="form-control-file" 
+                                           id="imageAdd" (change)="handleImage($event)">
                                 </div>
                             </div>
                         </div>
