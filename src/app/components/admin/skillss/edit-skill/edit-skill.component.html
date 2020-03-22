@@ -1,0 +1,66 @@
+<form #skillEditForm="ngForm" (ngSubmit)="save(skillEditForm.value)">
+    <!--Botones-->
+    <section id="details">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Editar Skill</h4>
+                        </div>
+                        <flash-messages></flash-messages>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="categoryMod">Categoria</label>
+                                        <input type="text" class="form-control" id="categoryMod" name="category" #category="ngModel"
+                                            [(ngModel)]="skill.category" required minlength="2">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="nameMod">Nombre</label>
+                                        <input type="text" class="form-control" id="nameMod" name="name" #name="ngModel"
+                                            [(ngModel)]="skill.name" required minlength="2">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label for="imageMod">Imagen</label>
+                                            <input type="file" class="form-control-file" id="imageMod"
+                                                (change)="handleImage($event)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a routerLink="/proyects" class="btn btn-info btn-block">
+                                        <i class="fas fa-arrow-left"></i> Volver
+                                    </a>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="fas fa-check"></i> Guardar
+                                    </button>
+                                </div>
+                                <div class="col-md-3">
+                                    <a (click)="delete()" class="btn btn-danger btn-block">
+                                        <i class="fas fa-trash"></i> Eliminar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</form>

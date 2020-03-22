@@ -1,0 +1,91 @@
+<h2>Gestion de Skills</h2>
+
+<!-- Boton Agregar Proyecto -->
+<button type="button" class="btn btn-primary p-2" data-toggle="modal" data-target=".bd-example-modal-lg">
+    <mdb-icon class="mr-1" fas icon="plus"></mdb-icon> Agregar Skill
+</button>
+<!-- Boton Agregar Proyecto -->
+
+<!-- Tabla de Skills -->
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Categoria</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let skill of skills; let s = index">
+            <td>{{skill.category}}</td>
+            <td>{{skill.name}}</td>
+            <td>{{skill.image}}</td>
+            <td>
+                <a routerLink="/skillss/edit/{{skill.id}}" class="btn btn-primary m-0 px-2 py-0">
+                    <i class="fas fa-angle-double-right"></i> Editar
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!-- Tabla de Skills -->
+
+<!-- Modal Agregar Skill -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar Skill</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #btnCloseAddS>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <flash-messages></flash-messages>
+            <form #skillForm="ngForm" (ngSubmit)="addSkill(skillForm.value)">
+                <div class="modal-body mt-3">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="categoryAdd">Categoria</label>
+                                <select class="form-control" id="categoryAdd" name="category" #category="ngModel"
+                                    [(ngModel)]="skill.category" required>
+                                    <option>HTML</option>
+                                    <option>CSS</option>
+                                    <option>JAVASCRIPT</option>
+                                    <option>JAVA</option>
+                                    <option>BACKEND</option>
+                                    <option>OTRO</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="nameAdd">Nombre</label>
+                                <input type="text" class="form-control" id="nameAdd" name="name" #name="ngModel"
+                                    [(ngModel)]="skill.name" required minlength="2">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="imageAdd">Imagen</label>
+                                    <input type="file" class="form-control-file" id="imageAdd"
+                                        (change)="handleImage($event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal Agregar Skill -->

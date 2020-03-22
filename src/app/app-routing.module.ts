@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ExperiencesComponent } from './components/settings/experiences/experiences.component';
-import { TrainingsComponent } from './components/settings/trainings/trainings.component';
-import { ProyectsComponent } from './components/settings/proyects/proyects.component';
-import { SkillssComponent } from './components/settings/skillss/skillss.component';
-import { EditExperienceComponent } from './components/settings/experiences/edit-experience/edit-experience.component';
-import { EditProyectComponent } from './components/settings/proyects/edit-proyect/edit-proyect.component';
-import { EditSkillComponent } from './components/settings/skillss/edit-skill/edit-skill.component';
-import { EditTrainingComponent } from './components/settings/trainings/edit-training/edit-training.component';
+import { ExperiencesComponent } from './components/admin/experiences/experiences.component';
+import { TrainingsComponent } from './components/admin/trainings/trainings.component';
+import { ProyectsComponent } from './components/admin/proyects/proyects.component';
+import { SkillssComponent } from './components/admin/skillss/skillss.component';
+import { EditExperienceComponent } from './components/admin/experiences/edit-experience/edit-experience.component';
+import { EditProyectComponent } from './components/admin/proyects/edit-proyect/edit-proyect.component';
+import { EditSkillComponent } from './components/admin/skillss/edit-skill/edit-skill.component';
+import { EditTrainingComponent } from './components/admin/trainings/edit-training/edit-training.component';
 
 
 const routes: Routes = [
