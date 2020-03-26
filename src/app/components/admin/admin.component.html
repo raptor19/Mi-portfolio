@@ -9,27 +9,39 @@
                 <!--Grid column-->
                 <div class="col-md-12 px-0">
                     <!-- As a heading -->
-                    <nav class="navbar navbar-dark bg-dark mx-0 ">
-                        <span class="navbar-brand mb-0 h1">Settings</span>
+                    <nav class="navbar navbar-dark bg-dark flex-md-nowrap p-0 shadow">
+                        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Settings</a>
+                        <input class="form-control form-control-dark w-100" type="text" placeholder="Search"
+                            aria-label="Search">
+                        <ul class="navbar-nav px-3">
+                            <li class="nav-item text-nowrap">
+                                <button type="button" class="btn btn-dark" (click)="logOut()">Salir</button>
+                            </li>
+                        </ul>
                     </nav>
                     <div class="row">
                         <div class="col-md-1">
-                            <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" routerLink="/experiences" routerLinkActive="active">Experiencias</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" routerLink="/proyects">Proyectos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" routerLink="/skillss">Skills</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" routerLink="/trainings">Formaciones</a>
-                                </li>
-                            </ul>
+                            <nav class="col-md-2 d-none d-md-block sidebar">
+                                <div class="sidebar-sticky">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link active px-1" routerLink="/experiences"
+                                                routerLinkActive="active">Experiencias</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-1" routerLink="/proyects">Proyectos</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-1" routerLink="/skillss">Skills</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link px-1" routerLink="/trainings">Formaciones</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
                         </div>
-                        <div class="col-md-11">           
+                        <div class="col-md-11">
                             <router-outlet></router-outlet>
                         </div>
                     </div>

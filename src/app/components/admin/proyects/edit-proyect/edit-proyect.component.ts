@@ -54,18 +54,6 @@ export class EditProyectComponent implements OnInit {
     }
   }
 
-  // Eliminar proyecto
-
-  delete() {
-    if (confirm('¿Seguro que desea elminar el proyecto?')) {
-      this.projectService.deleteProject(this.proyect);
-      this.flashMessages.show('Proyecto eliminado!', {
-        cssClass: 'alert-success', timeout: 4000
-      });
-      this.router.navigate(['/proyects']);
-    }
-  }
-
    // Agregar Imagen
 
    handleImage(event: any): void {

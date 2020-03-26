@@ -7,29 +7,22 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FlashMessagesModule } from 'angular2-flash-messages';
 // Material Design Bootstrap
 import { MdbModule } from './mdb.module';
 // Componentes
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/pages/home/home.component';
-import { AboutComponent } from './components/pages/about/about.component';
-import { SkillsComponent } from './components/pages/skills/skills.component';
-import { ProjectsComponent } from './components/pages/projects/projects.component';
-import { ContactComponent } from './components/pages/contact/contact.component';
+import { HomeComponent } from './components/pages/main/home/home.component';
+import { AboutComponent } from './components/pages/main/about/about.component';
+import { SkillsComponent } from './components/pages/main/skills/skills.component';
+import { ProjectsComponent } from './components/pages/main/projects/projects.component';
+import { ContactComponent } from './components/pages/main/contact/contact.component';
 import { HeaderComponent } from './shared/components/layout/header/header.component';
 import { FooterComponent } from './shared/components/layout/footer/footer.component';
-import { NoEncontradoComponent } from './components/pages/no-encontrado/no-encontrado.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { ExperiencesComponent } from './components/admin/experiences/experiences.component';
-import { ProyectsComponent } from './components/admin/proyects/proyects.component';
-import { TrainingsComponent } from './components/admin/trainings/trainings.component';
-import { SkillssComponent } from './components/admin/skillss/skillss.component';
+import { NoEncontradoComponent } from './components/pages/main/no-encontrado/no-encontrado.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { EditExperienceComponent } from './components/admin/experiences/edit-experience/edit-experience.component';
-import { EditTrainingComponent } from './components/admin/trainings/edit-training/edit-training.component';
-import { EditProyectComponent } from './components/admin/proyects/edit-proyect/edit-proyect.component';
-import { EditSkillComponent } from './components/admin/skillss/edit-skill/edit-skill.component';
+import { MainComponent } from './components/pages/main/main.component';
+import { AdminModule } from './components/admin/admin.module';
+
 
 // Services
 import { ProjectService } from './components/admin/services/project.service';
@@ -54,7 +47,10 @@ import { CardsModule} from 'angular-bootstrap-md';
 import { IconsModule} from 'angular-bootstrap-md';
 import { ModalModule} from 'angular-bootstrap-md';
 import { InputsModule} from 'angular-bootstrap-md';
+import { InputUtilitiesModule } from 'angular-bootstrap-md';
 import { CheckboxModule} from 'angular-bootstrap-md';
+import { LoginService } from './shared/services/login.service';
+
 
 // Translate
 export function createTranslateLoader(http: HttpClient) {
@@ -72,27 +68,20 @@ export function createTranslateLoader(http: HttpClient) {
     HeaderComponent,
     FooterComponent,
     NoEncontradoComponent,
-    AdminComponent,
-    ExperiencesComponent,
-    ProyectsComponent,
-    TrainingsComponent,
-    SkillssComponent,
     LoginComponent,
-    EditExperienceComponent,
-    EditTrainingComponent,
-    EditProyectComponent,
-    EditSkillComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    AdminModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase, 'app-cristian'),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    AppRoutingModule,
-    FormsModule,
     MdbModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -103,9 +92,9 @@ export function createTranslateLoader(http: HttpClient) {
     IconsModule,
     ModalModule.forRoot(),
     InputsModule,
+    InputUtilitiesModule,
     NavbarModule,
     CheckboxModule,
-    FlashMessagesModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -120,6 +109,7 @@ export function createTranslateLoader(http: HttpClient) {
     ExperienceService,
     AngularFireStorageModule,
     SkillService,
+    LoginService,
     TrainingService,
     { provide: FirestoreSettingsToken, useValue: {}}
   ],

@@ -3,6 +3,7 @@ import { Project } from 'src/app/shared/models/project';
 import { NgForm } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-proyects',
@@ -26,63 +27,48 @@ export class ProyectsComponent implements OnInit {
   image: any;
 
   @ViewChild('proyectForm', { static: false }) proyectForm: NgForm;
-  @ViewChild('btnCloseAddP', { static: false }) btnCloseAddP: ElementRef;
-  @ViewChild('modal', { static: false }) modal: any;
+  @ViewChild('btnCloseModal', { static: false }) btnCloseModal: ElementRef;
+  @ViewChild('btnAddProject', { static: false }) btnAddProject: ElementRef;
+  @ViewChild('modal', { static: false }) modal: ElementRef;
 
   constructor(private projectService: ProjectService,
-              private flashMessages: FlashMessagesService) { }
+              private flashMessages: FlashMessagesService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.projectService.getProjects().subscribe(
       pro => {
         this.proyects = pro;
       });
+    // cargo los botones en el servicio
+    this.projectService.btnCloseModal = this.btnCloseModal;
+    this.projectService.btnAddProject = this.btnAddProject;
   }
 
-  // Seleccionar proyecto
+  // Eliminar proyecto
 
-  onEdit(proyect: Project) {
-    this.idSelected = proyect.id;
-  }
-
-  // Agregar Proyecto
-
-  addProyect(value: Project) {
-      // Agregar el nuevo proyecto
-      if (value != null) {
-        this.projectService.preAddAndUpdatePost(value, this.image);
-        this.flashMessages.show('Proyecto Agregado', {
-          cssClass: 'alert-danger',
-          timeout: 4000
-        });
-        this.proyectForm.resetForm();
-        this.btnCloseAddP.nativeElement.click();
-      }
-  }
-
-  // Agregar Imagen
-
-  handleImage(event: any): void {
-    this.image = event.target.files[0];
-  }
-
-  // Modificar Proyaecto
-
-  editProyect(value: Project) {
-    console.log('Edit Project: ', value);
-    this.open(value);
-  }
-
-  open(value?: Project): void {
-    const config = {
-      data: {
-        message: value ? 'Editar Proyecto' : 'Nuevo proyecto ',
-        content: value
-      }
-    };
-    if (true) {
-      this.modal.open(config);
+  deleteProject(project: Project) {
+    if (confirm('¿Seguro que desea elminar el proyecto?')) {
+      this.projectService.deleteProject(project);
+      this.flashMessages.show('Proyecto eliminado!', {
+        cssClass: 'alert-success', timeout: 4000
+      });
+      this.router.navigate(['/proyects']);
     }
+  }
+
+  // Editar proyecto
+
+  editProject(project: Project) {
+
+  }
+
+  onOpen(event: any) {
+    console.log(event);
+  }
+  onClose(event: any) {
+    console.log(event);
   }
 
 }

@@ -1,0 +1,76 @@
+<form #proyectForm="ngForm" (ngSubmit)="addNewProject(proyectForm.value)">
+    <div class="modal-body mt-3">
+
+        <div class="form-row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="titleAdd">Titulo</label>
+                    <input type="text" class="form-control" id="titleAdd" name="title" #title="ngModel"
+                        [(ngModel)]="proyect.title" required minlength="2">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="urlWebAdd">Url-Web</label>
+                    <input type="text" class="form-control" id="urlWebAdd" name="urlWeb" #urlWeb="ngModel"
+                        [(ngModel)]="proyect.urlWeb" required minlength="2">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="urlGitAdd">Url-Git</label>
+                    <input type="text" class="form-control" id="urlGitAdd" name="urlGit" #urlGit="ngModel"
+                        [(ngModel)]="proyect.urlGit" required minlength="2">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Descripcion</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea" name="description"
+                            #description="ngModel" [(ngModel)]="proyect.description" required minlength="2">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Tecnologias</span>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea" name="technologies"
+                            #technologies="ngModel" [(ngModel)]="proyect.technologies" required minlength="2">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="imageAdd">Imagen</label>
+                        <input type="file" class="form-control-file" id="imageAdd" (change)="handleImage($event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+
+    </div>
+
+</form>

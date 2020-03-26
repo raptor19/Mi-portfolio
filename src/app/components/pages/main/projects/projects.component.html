@@ -1,0 +1,49 @@
+<div id="projects" class="container">
+    <div class="mt-5 pt-2">
+        <div class="d-flex justify-content-start">
+            <h4 class="text-center text-uppercase my-3 wow fadeIn">
+                <strong>mis proyectos</strong></h4>
+        </div>
+        <div class="row my-4 pb-2">
+            <div class="col-md-4">
+                <!--Card-->
+                <mdb-card cascade="true" narrower="true" *ngFor="let project of projects">
+
+                    <!--Card image-->
+                    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+                        <mdb-card-img [src]="project.image">
+                        </mdb-card-img>
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!--/Card image-->
+
+                    <mdb-card-body cascade="true" class="text-center">
+                        <!--Card content-->
+
+                        <!--Title-->
+                        <h4 class="card-title">{{ project.title }}</h4>
+                        <!--Text-->
+
+                        <mdb-card-text>
+                            {{project.description}} {{project.technologies}}
+                        </mdb-card-text>
+
+                        <a mdbBtn color="elegant" class="waves-light" mdbWavesEffect href="proyect.urlWeb">
+                            <mdb-icon far icon="eye" class="mr-1"></mdb-icon>Ver
+                        </a>
+                        <a mdbBtn color="elegant" class="waves-light" mdbWavesEffect href="proyect.urlGit">
+                            <mdb-icon fas icon="code" class="mr-1"></mdb-icon>Codigo
+                        </a>
+
+                    </mdb-card-body>
+                    <!--/.Card content-->
+
+                </mdb-card>
+                <!--/.Card-->
+            </div>
+
+        </div>
+    </div>
+</div>

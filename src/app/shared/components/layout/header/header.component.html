@@ -5,10 +5,9 @@
     <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
 
         <mdb-navbar-brand>
-            <a class="navbar-brand" href="#">
-                <img src="assets/cristian.jpg" class="img-fluid rounded-circle" 
-                alt="Cristian" height="50" width="50" data-toggle="modal" data-target="#basicExample"
-                (click)="frame.show()" mdbWavesEffect>
+            <a class="navbar-brand">
+                <img src="assets/cristian.jpg" class="img-fluid rounded-circle" alt="Cristian" height="50" width="50"
+                    data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
             </a>
         </mdb-navbar-brand>
 
@@ -37,7 +36,7 @@
             </ul>
 
         </links>
-        
+
         <!-- Links -->
 
     </mdb-navbar>
@@ -53,33 +52,36 @@
 
                 <!--Header-->
                 <div class="modal-header">
-                    <img src="assets/cristian.jpg" alt="cristian"
-                        class="rounded-circle img-responsive">
+                    <img src="assets/cristian.jpg" alt="cristian" class="rounded-circle img-responsive">
                 </div>
                 <!--Body-->
                 <div class="modal-body mb-1">
 
                     <h5 class="mt-1 mb-2 text-center">Almiron Cristian</h5>
+                    <flash-messages></flash-messages>
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" (submit)="login()" #loginForm="ngForm">
 
-                    <div class="md-form ml-0 mr-0">
-                        <input type="password" type="text" id="form29" class="form-control form-control-sm ml-0"
-                            mdbInput mdbValidate [formControl]="modalFormAvatarPassword">
-                        <label for="form29" class="ml-0">Clave</label>
-                        <mdb-error
-                            *ngIf="modalFormAvatarPassword.invalid && (modalFormAvatarPassword.dirty || modalFormAvatarPassword.touched)">
-                            Clave Incorrecta
-                        </mdb-error>
-                        <mdb-success
-                            *ngIf="modalFormAvatarPassword.valid && (modalFormAvatarPassword.dirty || modalFormAvatarPassword.touched)">
-                            Clave Correcta
-                        </mdb-success>
-                    </div>
+                        <!-- Usuario -->
+                        <div class="md-form">
+                            <label for="materialLoginFormUser" required>Email</label>
+                            <input type="email" id="materialLoginFormEmail" class="form-control" mdbInput mdbValidate
+                                name="email" [(ngModel)]="email">
+                        </div>
 
-                    <div class="text-center mt-4">
-                        <button mdbBtn color="cyan" rounded="true" class="mt-1 waves-light" mdbWavesEffect>Ingresar
-                            <mdb-icon fas icon="sign-in-alt" class="ml-1"></mdb-icon>
-                        </button>
-                    </div>
+                        <!-- Password -->
+                        <div class="md-form">
+                            <label for="materialLoginFormPassword" required>Password</label>
+                            <input type="password" id="materialLoginFormPassword" class="form-control" mdbInput
+                                mdbValidate name="password" [(ngModel)]="password">
+                        </div>
+
+                        <!-- Sign in button -->
+                        <button mdbBtn color="info" outline="true" rounded="true" block="true"
+                            class="my-4 waves-effect z-depth-0" mdbWavesEffect type="submit">Ingresar</button>
+
+                    </form>
+                    <!-- Form -->
                 </div>
 
             </div>

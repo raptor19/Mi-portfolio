@@ -1,11 +1,11 @@
 <h2>Gestion de Proyectos</h2>
 
 <!-- Boton Agregar Proyecto -->
-<button type="button" class="btn btn-primary p-2" data-toggle="modal" data-target=".bd-example-modal-lg">
-    <mdb-icon class="mr-1" fas icon="plus"></mdb-icon> Agregar Proyecto
+<button type="button" mdbBtn color="primary" rounded="true" data-toggle="modal" data-target="#basicExample"
+    (click)="frame.show()" mdbWavesEffect>
+    <mdb-icon class="mr-1" fas icon="plus"></mdb-icon>Agregar Proyecto
 </button>
 <!-- Boton Agregar Proyecto -->
-
 
 <!-- Tabla de Proyectos -->
 <table class="table">
@@ -29,8 +29,11 @@
             <td>{{proyect.urlGit}}</td>
             <td>{{proyect.fileRef}}</td>
             <td>
-                <a routerLink="/proyect/edit/{{proyect.id}}" class="btn btn-primary m-0 px-2 py-0">
+                <a (click)="editProject(proyect)" class="btn btn-primary m-0 px-2 py-0">
                     <i class="fas fa-angle-double-right"></i> Editar
+                </a>
+                <a (click)="deleteProject(proyect)" class="btn btn-primary m-0 px-2 py-0">
+                    <i class="far fa-trash-alt"></i> Eliminar
                 </a>
             </td>
         </tr>
@@ -39,103 +42,28 @@
 <!-- Tabla de Proyectos -->
 
 <!-- Modal Agregar Proyecto -->
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true" #modal>
-    <div class="modal-dialog modal-lg" role="document">
+<div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true" (open)="onOpen($event)">
+    <div class="modal-dialog modal-notify modal-success" role="document">
+        <!--Content-->
         <div class="modal-content">
+            <!--Header-->
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{data.message}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" #btnCloseAddP>
-                    <span aria-hidden="true">&times;</span>
+                <p class="heading lead">Agregar proyecto</p>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()"
+                    #btnC>
+                    <span aria-hidden="true" class="white-text">&times;</span>
                 </button>
             </div>
-            <flash-messages></flash-messages>
-            <div *ngIf="data.content; else showNewForm">
-                <app-edit-proyect [proyect]="data.content"></app-edit-proyect>
+
+            <!--Body-->
+            <div class="modal-body">
+                <app-new-proyect></app-new-proyect>
             </div>
-            <ng-template #showNewForm>
-                <form #proyectForm="ngForm" (ngSubmit)="addProyect(proyectForm.value)">
-                    <div class="modal-body mt-3">
-
-                        <div class="form-row">
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="titleAdd">Titulo</label>
-                                    <input type="text" class="form-control" id="titleAdd" name="title" #title="ngModel"
-                                        [(ngModel)]="proyect.title" required minlength="2">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="urlWebAdd">Url-Web</label>
-                                    <input type="text" class="form-control" id="urlWebAdd" name="urlWeb"
-                                        #urlWeb="ngModel" [(ngModel)]="proyect.urlWeb" required minlength="2">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="urlGitAdd">Url-Git</label>
-                                    <input type="text" class="form-control" id="urlGitAdd" name="urlGit"
-                                        #urlGit="ngModel" [(ngModel)]="proyect.urlGit" required minlength="2">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Descripcion</span>
-                                        </div>
-                                        <textarea class="form-control" aria-label="With textarea" name="description"
-                                            #description="ngModel" [(ngModel)]="proyect.description" required
-                                            minlength="2">
-                                        </textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Tecnologias</span>
-                                        </div>
-                                        <textarea class="form-control" aria-label="With textarea" name="technologies"
-                                            #technologies="ngModel" [(ngModel)]="proyect.technologies" required
-                                            minlength="2">
-                                        </textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <label for="imageAdd">Imagen</label>
-                                        <input type="file" class="form-control-file" id="imageAdd"
-                                            (change)="handleImage($event)">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
-                </form>
-            </ng-template>
         </div>
+        <!--/.Content-->
     </div>
 </div>
 <!-- Modal Agregar Proyecto -->
+

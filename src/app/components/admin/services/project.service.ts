@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ElementRef } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Project } from '../../../shared/models/project';
@@ -14,6 +14,8 @@ export class ProjectService {
   project: Observable<Project>;
   filePath: any;
   dowloadUrl: Observable<string>;
+  btnCloseModal: ElementRef;
+  btnAddProject: ElementRef;
 
   constructor(private db: AngularFirestore,
               private storage: AngularFireStorage) {
@@ -96,7 +98,7 @@ export class ProjectService {
 
   // Pre-agregar proyecto
 
-  preAddAndUpdatePost(project: Project, image: File): void {
+  preAddAndUpdateProject(project: Project, image: File): void {
     this.uploadImage(project, image);
   }
 

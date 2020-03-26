@@ -3,6 +3,7 @@ import { Skill } from 'src/app/shared/models/skill';
 import { SkillService } from 'src/app/components/admin/services/skill.service';
 import { NgForm } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-skillss',
@@ -26,7 +27,8 @@ export class SkillssComponent implements OnInit {
   @ViewChild('btnCloseAddS', { static: false }) btnCloseAddS: ElementRef;
 
   constructor(private skillService: SkillService,
-              private flashMessages: FlashMessagesService) { }
+              private flashMessages: FlashMessagesService,
+              private router: Router) { }
 
   ngOnInit() {
     this.skillService.getSkills().subscribe(
@@ -36,31 +38,23 @@ export class SkillssComponent implements OnInit {
     console.log(this.skills);
   }
 
+  deleteSkill(skill: Skill) {
+    if (confirm('¿Seguro que desea elminar el skill?')) {
+      this.skillService.deleteSkill(skill);
+      this.flashMessages.show('Skill eliminado!', {
+        cssClass: 'alert-success', timeout: 4000
+      });
+      this.router.navigate(['/proyects']);
+    }
+  }
+
+  modifySkill(skill: Skill) {
+
+  }
+
   // Seleccionar skill
 
   onEdit(skill: Skill) {
     this.idSelected = skill.id;
   }
-
-  // Agregar Skill
-
-  addProyect(value: Skill) {
-    // Agregar el nuevo proyecto
-    if (value != null) {
-      this.skillService.preAddAndUpdateSkill(value, this.image);
-      this.flashMessages.show('Skill Agregado', {
-        cssClass: 'alert-danger',
-        timeout: 4000
-      });
-      this.proyectForm.resetForm();
-      this.btnCloseAddS.nativeElement.click();
-    }
-  }
-
-  // Agregar Imagen
-
-  handleImage(event: any): void {
-    this.image = event.target.files[0];
-  }
-
 }
