@@ -1,49 +1,63 @@
-<div id="projects" class="container">
-    <div class="mt-5 pt-2">
-        <div class="d-flex justify-content-start">
-            <h4 class="text-center text-uppercase my-3 wow fadeIn">
-                <strong>mis proyectos</strong></h4>
-        </div>
-        <div class="row my-4 pb-2">
-            <div class="col-md-4">
-                <!--Card-->
-                <mdb-card cascade="true" narrower="true" *ngFor="let project of projects">
-
-                    <!--Card image-->
-                    <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-                        <mdb-card-img [src]="project.image">
-                        </mdb-card-img>
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
+<div id="projects" class="projects-section">
+    <div class="container">
+        <div class="container my-5 py-5 z-depth-1" style="box-shadow: none !important">
+            <!--Section: Content-->
+            <section class="px-md-5 mx-md-5 text-center">
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center">
+                    <!--Grid column-->
+                    <div class="col-lg-12 col-md-12 my-5">
+                        <h2 class="font-weight-bold my-3">MIS PROYECTOS</h2>
+                        <p>Mis proyectos de entrenamiento.</p>
                     </div>
-                    <!--/Card image-->
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+                <div class="row">
+                    <div class="col-md-4 mx-auto my-3">
+                        <!--Card-->
+                        <mdb-card dark="true" *ngFor="let project of projects">
 
-                    <mdb-card-body cascade="true" class="text-center">
-                        <!--Card content-->
+                            <!--Card image-->
+                            <div class="view overlay waves-light" mdbWavesEffect>
+                                <mdb-card-img
+                                    [src]="project.image">
+                                </mdb-card-img>
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                            <!--/.Card image-->
 
-                        <!--Title-->
-                        <h4 class="card-title">{{ project.title }}</h4>
-                        <!--Text-->
+                            <!--Card content-->
+                            <mdb-card-body class="elegant-color white-text">
 
-                        <mdb-card-text>
-                            {{project.description}} {{project.technologies}}
-                        </mdb-card-text>
+                                <!--Title-->
+                                <mdb-card-title>
+                                    <h4>{{ project.title }}</h4>
+                                </mdb-card-title>
 
-                        <a mdbBtn color="elegant" class="waves-light" mdbWavesEffect href="proyect.urlWeb">
-                            <mdb-icon far icon="eye" class="mr-1"></mdb-icon>Ver
-                        </a>
-                        <a mdbBtn color="elegant" class="waves-light" mdbWavesEffect href="proyect.urlGit">
-                            <mdb-icon fas icon="code" class="mr-1"></mdb-icon>Codigo
-                        </a>
+                                <hr class="hr-light">
 
-                    </mdb-card-body>
-                    <!--/.Card content-->
+                                <!--Text-->
 
-                </mdb-card>
-                <!--/.Card-->
-            </div>
-
+                                <mdb-card-text class="white-text">
+                                    Descripcion: {{project.description}}
+                                    Tecnologias: {{project.technologies}}
+                                </mdb-card-text>
+                                <button mdbBtn type="button" color="light" size="sm" mdbWavesEffect>Ver<mdb-icon far icon="eye" class="ml-1"></mdb-icon></button>
+                                <button mdbBtn type="button" color="light" size="sm" mdbWavesEffect>Codigo<mdb-icon fas icon="code" class="ml-1"></mdb-icon></button>
+                            
+                                    
+                                                                   
+                            </mdb-card-body>
+                            <!--/.Card content-->
+                        </mdb-card>
+                        <!--/.Card-->
+                    </div>
+                </div>
+            </section>
+            <!--Section: Content-->
         </div>
     </div>
 </div>
