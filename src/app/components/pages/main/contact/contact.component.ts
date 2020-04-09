@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private flashMessagesService: FlashMessagesService) {
+
+   }
 
   ngOnInit() {
+  }
+
+  enviado() {
+    this.flashMessagesService.show('Mensaje Enviado!', { cssClass: 'alert-success', timeout: 1000 });
   }
 
 }

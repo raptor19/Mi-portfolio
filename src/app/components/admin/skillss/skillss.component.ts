@@ -31,12 +31,15 @@ export class SkillssComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    // cargar skills de la bd
     this.skillService.getSkills().subscribe(
       ski => {
         this.skills = ski;
       });
     console.log(this.skills);
   }
+
+  // Eliminar Skill
 
   deleteSkill(skill: Skill) {
     if (confirm('¿Seguro que desea elminar el skill?')) {
@@ -46,10 +49,6 @@ export class SkillssComponent implements OnInit {
       });
       this.router.navigate(['/proyects']);
     }
-  }
-
-  modifySkill(skill: Skill) {
-
   }
 
   // Seleccionar skill

@@ -16,10 +16,8 @@ export class AdminComponent implements OnInit {
   }
 
   // Cerrar Sesion
-
   logOut() {
     this.loginService.logOut();
     this.router.navigate(['main']);
   }
-
 }

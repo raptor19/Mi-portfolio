@@ -1,8 +1,8 @@
+<!--NuevoProyecto-->
 <form #proyectForm="ngForm" (ngSubmit)="addNewProject(proyectForm.value)">
     <div class="modal-body mt-3">
-
         <div class="form-row">
-
+            <!--Titulo-->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="titleAdd">Titulo</label>
@@ -10,7 +10,7 @@
                         [(ngModel)]="proyect.title" required minlength="2">
                 </div>
             </div>
-
+            <!--UrlWeb-->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="urlWebAdd">Url-Web</label>
@@ -18,7 +18,7 @@
                         [(ngModel)]="proyect.urlWeb" required minlength="2">
                 </div>
             </div>
-
+            <!--UrlGit-->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="urlGitAdd">Url-Git</label>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-row">
-
+            <!--Descripcion-->
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-
+            <!--Tecnologias-->
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group">
@@ -55,9 +55,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
+        <!--Imagen-->
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <div class="form-group">
@@ -68,9 +67,9 @@
                 </div>
             </div>
         </div>
-
+        <!--Botones-->
         <button type="submit" class="btn btn-primary">Guardar</button>
-
     </div>
 
 </form>
+<!--NuevoProyecto-->

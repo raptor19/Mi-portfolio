@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   email: string;
   password: string;
   @ViewChild('loginForm', { static: false }) loginForm: NgForm;
+  @ViewChild('hamburguer', { static: false }) hamburguer: any;
 
   constructor(private router: Router,
               private flashMessages: FlashMessagesService,
@@ -25,6 +26,10 @@ export class HeaderComponent implements OnInit {
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
+  }
+
+  openHamburguerButton() {
+    this.hamburguer.toggleClass('open');
   }
 
   get input() { return this.logForm.get('email'); }

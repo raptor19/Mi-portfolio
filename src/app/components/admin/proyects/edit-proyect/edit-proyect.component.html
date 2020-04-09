@@ -1,8 +1,9 @@
+<!--Editar Proyecto-->
 <div class="edit-proyect">
     <form #proyectEditForm="ngForm" (ngSubmit)="save(proyectEditForm.value)">
         <flash-messages></flash-messages>
         <div class="form-row">
-
+            <!--Titulo-->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="titleMod">Titulo</label>
@@ -10,7 +11,7 @@
                         [(ngModel)]="proyect.title" required minlength="2">
                 </div>
             </div>
-
+            <!--UrlWeb-->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="urlwebMod">Url-Web</label>
@@ -18,7 +19,7 @@
                         [(ngModel)]="proyect.urlWeb" required minlength="2">
                 </div>
             </div>
-
+            <!--UrlGit-->
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="urlgitMod">Url-Git</label>
@@ -30,7 +31,7 @@
         </div>
 
         <div class="form-row">
-
+            <!--Descripcion-->
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group">
@@ -43,7 +44,7 @@
                     </div>
                 </div>
             </div>
-
+            <!--Tecnologias-->
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group">
@@ -56,11 +57,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="form-row">
-
+            <!--Imagen actual-->
             <div class="col-md-6 mb-3">
                 <div class="form-group">
                     <div class="input-group">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div>
-
+            <!--Nueva imagen-->
             <div class="col-md-6 mb-3">
                 <div class="form-group">
                     <div class="input-group">
@@ -81,6 +81,7 @@
         </div>
 
         <div class="row">
+            <!--Botones-->
             <div class="col-md-3">
                 <a routerLink="/proyects" class="btn btn-info btn-block">
                     <i class="fas fa-arrow-left"></i> Volver

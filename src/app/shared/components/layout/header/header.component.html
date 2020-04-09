@@ -1,49 +1,44 @@
-<!-- Main navigation -->
+<!-- Header -->
 <header>
-
     <!--Navbar-->
-    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
-
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar top-nav-collapse">
         <mdb-navbar-brand>
             <a class="navbar-brand">
-                <img src="assets/cristian.jpg" class="img-fluid rounded-circle" alt="Cristian" height="50" width="50"
-                    data-toggle="modal" data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
+                <img src="assets/logo.png" class="img-fluid" alt="cristian" height="40" width="40" data-toggle="modal"
+                    data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>
             </a>
         </mdb-navbar-brand>
-
+        <!-- Links -->
         <links>
             <!-- Links -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" >
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect href="#home">Home<span
+                    <a class="nav-link waves-light grey-text" mdbWavesEffect href="#home">Home<span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect href="#about">Sobre mi</a>
+                    <a class="nav-link waves-light grey-text" mdbWavesEffect href="#about">Sobre mi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect href="#skills">Skills</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect href="#projects">Proyectos</a>
+                    <a class="nav-link waves-light grey-text" mdbWavesEffect href="#skills">Skills</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link waves-light" mdbWavesEffect href="#contact">Contacto</a>
+                    <a class="nav-link waves-light grey-text" mdbWavesEffect href="#projects">Proyectos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link waves-light grey-text" mdbWavesEffect href="#contact">Contacto</a>
                 </li>
 
             </ul>
 
         </links>
-
         <!-- Links -->
-
     </mdb-navbar>
     <!-- Navbar -->
 
     <!-- Modal Login-->
-
     <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
         aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
@@ -92,21 +87,60 @@
 
 
     <!-- Full Page Intro -->
-    <div id="home" class="view"
-        style="background-image: url('https://mdbootstrap.com/img/Photos/Others/gradient2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div id="home" class="view bg-purple">
         <!-- Mask & flexbox options-->
-        <div class="mask rgba-purple-slight d-flex justify-content-center align-items-center">
+        <div class="stars mask rgba-purple-slight d-flex justify-content-center align-items-center">
             <!-- Content -->
             <div class="container">
-                <!--Grid row-->
-                <div class="row wow fadeIn">
-                    <!--Grid column-->
-                    <div class="col-md-12 text-center">
-                        <h1 class="display-4 font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInUp">Soy Cristian
-                        </h1>
-                        <h5 class="pt-md-5 pt-sm-2 pt-5 pb-md-5 pb-sm-3 pb-5 wow fadeInUp" data-wow-delay="0.2s">
-                            Desarrollador web</h5>
+                <div class="objects">
+                    <img class="object_rocket" src="assets/rocket.svg" width="40px">
+                    <div class="earth-moon">
+                        <img class="object_earth" src="assets/earth.svg" width="100px">
+                        <img class="object_moon" src="assets/moon.svg" width="80px">
+                    </div>
+                    <div class="box_astronaut">
+                        <img class="object_astronaut" src="assets/astronaut.svg"
+                            width="140px">
+                    </div>
+                </div>
+                <div class="objects">
+                    <img class="object_rocket" src="assets/rocket.svg" width="40px">
+                    <div class="earth-moon">
+                        <img class="object_earth" src="assets/earth.svg" width="100px">
+                        <img class="object_moon" src="assets/moon.svg" width="80px">
+                    </div>
+                    <div class="box_astronaut">
+                        <img class="object_astronaut" src="assets/astronaut.svg"
+                            width="140px">
+                    </div>
+                </div>
+                <div class="glowing_stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
 
+                </div>
+                <div class="glowing_stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+
+                </div>
+                <!--Grid row-->
+                <div class="row wow fadeIn central-body">
+                    <!--Grid column-->
+                    <div class="col-md-12 pt-2 text-center">
+                        <h1 class="display-4 font-weight-bold mb-0 pt-md-2 pt-2 wow fadeInUp" style="color: #f5f5f5;">
+                            Soy Cristian
+                        </h1>
+                        <h5 class="pt-md-3 pt-sm-2 pt-3 pb-md-5 pb-sm-3 pb-5 wow fadeInUp" data-wow-delay="0.2s"
+                            style="color: #f5f5f5;">
+                            &lt;Desarrollador web/&gt;</h5>
+                            <a class="nav-link" href="#about"><i class="fas fa-angle-double-down white-text fa-2x animated bounce infinite"></i></a>
                     </div>
                     <!--Grid column-->
                 </div>
@@ -119,4 +153,4 @@
     <!-- Full Page Intro -->
 
 </header>
-<!-- Main navigation -->
+<!-- Header -->

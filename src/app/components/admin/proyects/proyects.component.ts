@@ -25,7 +25,6 @@ export class ProyectsComponent implements OnInit {
   };
   idSelected: string;
   image: any;
-
   @ViewChild('proyectForm', { static: false }) proyectForm: NgForm;
   @ViewChild('btnCloseModal', { static: false }) btnCloseModal: ElementRef;
   @ViewChild('btnAddProject', { static: false }) btnAddProject: ElementRef;
@@ -37,6 +36,7 @@ export class ProyectsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
+    // cargo los proyectos de la bd
     this.projectService.getProjects().subscribe(
       pro => {
         this.proyects = pro;
@@ -58,11 +58,7 @@ export class ProyectsComponent implements OnInit {
     }
   }
 
-  // Editar proyecto
-
-  editProject(project: Project) {
-
-  }
+// Abrir y cerra modal
 
   onOpen(event: any) {
     console.log(event);

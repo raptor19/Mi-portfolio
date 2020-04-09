@@ -18,7 +18,7 @@ export class ExperienceService {
 
   // consultar todos las experiencias
   getExperiences(): Observable<Experience[]> {
-    // Obtener las expereincias
+    // Obtener las experiencias
     this.experiences = this.experiencesColeccion.snapshotChanges().pipe(
       map(changes => {
         return changes.map(action => {
